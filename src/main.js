@@ -1,6 +1,40 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import { createApp } from 'vue'
+import { createRouter, createWebHistory } from "vue-router";
 import App from './App.vue'
+import Homepage from './views/homepage.vue'
+import About from './views/about.vue'
+import Gallery from './views/gallery.vue'
+import Image from './views/image.vue'
 
 import './assets/main.css'
 
-createApp(App).mount('#app')
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [ 
+    {
+      path: "/", 
+      component: Homepage, 
+      meta: {title: "Matt Pagett | Home"}
+    },
+    {
+      path: "/:series",
+      component: Gallery,
+    },
+    {
+      path: "/:series/:image",
+      component: Image,
+    },
+    {
+      path: "/about",
+      component: About
+    }
+  ]
+})
+
+
+createApp(App)
+.use(router)
+.mount('#app')
