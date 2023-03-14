@@ -28,6 +28,10 @@ const router = createRouter({
       component: Image,
     },
     {
+      path: "/books",
+      component: Image
+    },
+    {
       path: "/about",
       component: About
     }

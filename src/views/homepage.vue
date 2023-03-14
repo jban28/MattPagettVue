@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
   div {
     height: 100%;
     overflow: hidden;

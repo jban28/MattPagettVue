@@ -13,16 +13,15 @@
             <router-link to="/">MATT PAGETT</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="bodies.html">Bodies</a>
+            <router-link to="/bodies">Bodies</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="flowers.html">Flowers</a>
+            <router-link to="/flowers">Flowers</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="books.html">Books</a>
+            <router-link to="/books">Books</router-link>
           </li>
           <li class="nav-item">
-            <!--<a class="nav-link" style="padding-right: 0px" href="about.html">About/Contact</a>-->
             <router-link to="/about">About/Contact</router-link>
           </li>
         </ul>
@@ -41,8 +40,12 @@
 router-link {
   margin: auto;
   vertical-align: middle;
+  
 }
 
+.router-link-active{
+  color: black;
+}
 
 .nav-link{
   color: #cc0000;

@@ -1,4 +1,4 @@
-<script>
+<script setup>
   window.onload = function () {
     const image = document.querySelector("#image");
     const frame = document.querySelector('#frame');
