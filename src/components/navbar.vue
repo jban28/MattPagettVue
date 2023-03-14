@@ -37,6 +37,10 @@
   background-color: white;
 }
 
+.container-fluid {
+  max-width: 1000px;
+}
+
 router-link {
   margin: auto;
   vertical-align: middle;

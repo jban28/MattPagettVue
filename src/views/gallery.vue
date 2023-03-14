@@ -1,5 +1,7 @@
 <template>
-  <router-link v-for='image in images' :to='"/" + $route.params.series + "/" + image.row + image.col'><img :src=image.source></router-link>
+  <div>
+    <router-link v-for='image in images' :to='"/" + $route.params.series + "/" + image.row + image.col'><img :src=image.source></router-link>
+  </div>
 </template>
 
 
@@ -20,7 +22,16 @@
 </script>
 
 <style scoped>
+  div {
+    max-width: 1000px;
+    margin: auto;
+    padding-left: 12px;
+  }
   img {
-    width: 33%;
+    width: 33.33333%;
+    padding-top: 0px;
+    padding-bottom: 12px;
+    padding-right: 12px;
+    padding-left: 0px;
   }
 </style>
