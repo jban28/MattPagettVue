@@ -35,6 +35,8 @@
   padding-bottom: 10px;
   flex-grow: 0;
   background-color: white;
+  position: fixed;
+  width: 100%
 }
 
 .container-fluid {

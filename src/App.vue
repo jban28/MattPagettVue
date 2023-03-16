@@ -4,10 +4,11 @@
 
 <template>
   <header>
-    <Navbar/>
+
   </header>
 
   <main>
+    <Navbar/>
     <router-view :key="$route.fullPath"></router-view>
   </main>
 </template>
