@@ -7,6 +7,7 @@ import Homepage from './views/homepage.vue'
 import About from './views/about.vue'
 import Gallery from './views/gallery.vue'
 import Image from './views/image.vue'
+import Books from './views/books.vue'
 
 import './assets/main.css'
 
@@ -21,15 +22,15 @@ const router = createRouter({
     },
     {
       path: "/:series",
-      component: Gallery,
+      component: Gallery
     },
     {
       path: "/:series/:image",
-      component: Image,
+      component: Image
     },
     {
       path: "/books",
-      component: Image
+      component: Books
     },
     {
       path: "/about",

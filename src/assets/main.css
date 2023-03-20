@@ -4,11 +4,6 @@
   flex-flow: column;
 }
 
-main {
-  height: 100%;
-  overflow: auto;
-}
-
 body {
   background-color: #666666;
   font-family:'Times New Roman', Times, serif;
@@ -22,8 +17,4 @@ a {
 
 a:hover {
   color: black;
-}
-
-p {
-  margin: 12px;
 }

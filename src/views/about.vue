@@ -1,5 +1,5 @@
 <template>
-  <p>
+  <p class="about">
     I'm an artist based in London, UK.<br/>
     <a href="mailto:matthew.pagett@gmail.com">matthew.pagett@gmail.com</a><br/><br/>
     
@@ -185,3 +185,9 @@
   </p>
 
 </template>
+
+<style>
+  p.about {
+    margin: 12px;
+  }
+</style>
