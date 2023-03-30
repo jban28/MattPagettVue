@@ -1,9 +1,17 @@
 <script setup>
   import { onMounted } from 'vue';
+  import fadeTransition from '../transitions/fade-transition.vue'
+  import { reactive } from 'vue'
 
   defineProps({
     source: String,
   })
+
+  let show = reactive({showing: false});
+  let showImg = function () {
+    show.showing = true;
+  }
+
   onMounted(() => {
 
     const image = document.querySelector("#image");
@@ -212,16 +220,17 @@
 </script>
 
 <template>
-    <div id="controls">
-      <span id="full-screen" class="material-icons">fullscreen</span>
-      <span id="help-button" class="material-icons">help_outline</span>
-      <span id="slider-box" class="material-icons"><input type="range" min="0" max="1" value="0" step="0.01" id="slider" label="zoom"/></span>
+  <div id="controls">
+    <span id="help-button" class="material-icons">help_outline</span>
+    <span id="full-screen" class="material-icons">fullscreen</span>
+    <span id="slider-box" class="material-icons"><input type="range" min="0" max="1" value="0" step="0.01" id="slider" label="zoom"/></span>
+  </div>
+  <div id="external-frame">
+    <div id="frame">
+      <fadeTransition><div v-show="!show.showing" class="loader"></div></fadeTransition>
+      <fadeTransition><img v-show="show.showing" @load="showImg()" id= "image" :src='source'/></fadeTransition>
     </div>
-    <div id="external-frame">
-      <div id="frame">
-        <img id= "image" :src='source'/>
-      </div>
-    </div>
+  </div>
     
   <div id="help-window">
     <div id="help-content">
@@ -252,19 +261,19 @@
 
   #frame {
     height: 100%;
-    text-align:center;
+    text-align: center;
     overflow: hidden;
   }
 
   #controls {
     cursor: pointer;
-    padding-left: 12px;
+    padding: 6px 12px;
     margin: auto;
     overflow: visible;
     color: #cc0000;
     max-width: 1000px;
     width: 100%;
-    height: 24px;
+    height: 36px;
   }
 
   .material-icons {
@@ -380,5 +389,21 @@
     float: right;
     color: black;
     cursor: pointer;
+  }
+  .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #cc0000; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    left: calc(50% - 60px);
+    top: calc(50%);
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 </style>

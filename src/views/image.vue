@@ -120,9 +120,11 @@
 
 <template>
   <div class="image-header">
-    <router-link :to='"./" + last'><span class="material-icons">west</span></router-link>
-    <router-link :to='"./" + next'><span class="material-icons">east</span></router-link>
-    <p class="caption">{{ caption }}</p>
+
+    <p class="caption">
+      <router-link :to='"./" + last'><span class="material-icons">west</span></router-link>
+      <router-link :to='"./" + next'><span class="material-icons">east</span></router-link>
+      {{ caption }}</p>
   </div>
 
   <ZoomWindow :source='"../src/assets/images/2480 " + $route.params.series + "/2480_" + $route.params.series + "_" + $route.params.image + ".jpg"'/>    
@@ -138,7 +140,7 @@
   .image-header {
     max-width: 1000px;
     width: 100%;
-    padding: 12px;
+    padding: 6px 12px;
     margin: auto;
     position: relative;
     vertical-align: top;
@@ -146,8 +148,12 @@
 
   .caption {
     display: inline-block;
-    
     margin-bottom: 0px;
-    margin-left: 4px;
+  }
+
+  .material-icons { 
+    display: inline-block;
+    position: relative;
+    top: 6px;
   }
 </style>

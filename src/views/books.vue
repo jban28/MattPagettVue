@@ -5,3 +5,6 @@
 <template>
   <ZoomWindow source='../src/assets/images/books.jpg'/>    
 </template>
+
+<style>
+</style>

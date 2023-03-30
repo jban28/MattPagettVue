@@ -1,10 +1,3 @@
-<template>
-  <div>
-    <router-link v-for='image in images' :to='"/" + $route.params.series + "/" + image.row + image.col'><img :src=image.source></router-link>
-  </div>
-</template>
-
-
 <script setup>
   import {useRoute} from "vue-router";
   const indices = ["A", "B", "C"];
@@ -20,6 +13,12 @@
     if (i == last) {break};
   }
 </script>
+
+<template>
+  <div>
+    <router-link v-for='image in images' :to='"/" + $route.params.series + "/" + image.row + image.col'><img :src=image.source></router-link>
+  </div>
+</template>
 
 <style scoped>
   div {
