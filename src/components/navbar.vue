@@ -1,27 +1,26 @@
 <template>
   <nav class="navbar navbar-expand-sm">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">MATT PAGETT</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-      data-bs-target="#collapsibleNavbar">
+      <router-link class="navbar-brand router-link-active" to="/"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">MATT PAGETT</span></router-link>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <div class="navbar-collapse collapse" id="collapsibleNavbar">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item hide-sm">
-            <router-link class="router-link-active" to="/">MATT PAGETT</router-link>
+            <router-link class="router-link-active" to="/" ><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">MATT PAGETT</span></router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/bodies">Bodies</router-link>
+            <router-link to="/bodies"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">Bodies</span></router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/flowers">Flowers</router-link>
+            <router-link to="/flowers"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">Flowers</span></router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/books">Books</router-link>
+            <router-link to="/books"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">Books</span></router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/about">About/Contact</router-link>
+            <router-link to="/about"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">About/Contact</span></router-link>
           </li>
         </ul>
       </div>
@@ -37,6 +36,7 @@
   background-color: white;
   width: 100%;
   position: fixed;
+  z-index: 1;
 }
 
 .navbar-toggler-icon{

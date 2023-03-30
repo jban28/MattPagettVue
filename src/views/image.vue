@@ -122,7 +122,7 @@
   <div class="image-header">
     <router-link :to='"./" + last'><span class="material-icons">west</span></router-link>
     <router-link :to='"./" + next'><span class="material-icons">east</span></router-link>
-    <span class="caption">{{ caption }}</span>
+    <p class="caption">{{ caption }}</p>
   </div>
 
   <ZoomWindow :source='"../src/assets/images/2480 " + $route.params.series + "/2480_" + $route.params.series + "_" + $route.params.image + ".jpg"'/>    
@@ -141,19 +141,13 @@
     padding: 12px;
     margin: auto;
     position: relative;
+    vertical-align: top;
   }
 
   .caption {
-    height: 24px;
-    margin-left: 4px;
     display: inline-block;
-    position: relative;
-    top: 12px;
-  }
-
-  .material-icons {
-    color: inherit;
-    float: bottom;
-    display: inline;
+    
+    margin-bottom: 0px;
+    margin-left: 4px;
   }
 </style>
