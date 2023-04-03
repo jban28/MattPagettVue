@@ -1,6 +1,6 @@
 <script setup>
   import { onMounted } from 'vue';
-  import fadeTransition from '../transitions/fade-transition.vue'
+  import FadeTransition from '../transitions/fade-transition.vue';
   import { reactive } from 'vue'
 
   defineProps({
@@ -220,15 +220,17 @@
 </script>
 
 <template>
-  <div id="controls">
-    <span id="help-button" class="material-icons">help_outline</span>
-    <span id="full-screen" class="material-icons">fullscreen</span>
-    <span id="slider-box" class="material-icons"><input type="range" min="0" max="1" value="0" step="0.01" id="slider" label="zoom"/></span>
-  </div>
+  <FadeTransition appear>
+    <div id="controls">
+      <span id="help-button" class="material-icons">help_outline</span>
+      <span id="full-screen" class="material-icons">fullscreen</span>
+      <span id="slider-box" class="material-icons"><input type="range" min="0" max="1" value="0" step="0.01" id="slider" label="zoom"/></span>
+    </div>
+  </FadeTransition>
   <div id="external-frame">
     <div id="frame">
-      <fadeTransition><div v-show="!show.showing" class="loader"></div></fadeTransition>
-      <fadeTransition><img v-show="show.showing" @load="showImg()" id= "image" :src='source'/></fadeTransition>
+      <FadeTransition><div v-show="!show.showing" class="loader"></div></fadeTransition>
+      <FadeTransition><img v-show="show.showing" @load="showImg()" id= "image" :src='source'/></fadeTransition>
     </div>
   </div>
     

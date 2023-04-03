@@ -1,5 +1,6 @@
 <script setup>
   import {useRoute} from "vue-router";
+  import ImageLoader from "../components/image-loader.vue";
   const indices = ["A", "B", "C"];
   let images = [];
   let series = useRoute().params.series;
@@ -15,22 +16,17 @@
 </script>
 
 <template>
-  <div>
-    <router-link v-for='image in images' :to='"/" + $route.params.series + "/" + image.row + image.col'><img :src=image.source></router-link>
+  <div class="gallery">
+    <ImageLoader v-for='image in images' :route='"/" + $route.params.series + "/" + image.row + image.col' :img-url='image.source'/>
+    <!--<router-link v-for='image in images' :to='"/" + $route.params.series + "/" + image.row + image.col'><img :src=image.source></router-link>-->
   </div>
 </template>
 
 <style scoped>
-  div {
+  .gallery {
     max-width: 1000px;
+    width: 100%;
     margin: auto;
-    padding-left: 12px;
-  }
-  img {
-    width: 33.33333%;
-    padding-top: 0px;
-    padding-bottom: 12px;
-    padding-right: 12px;
-    padding-left: 0px;
+    padding: 6px;
   }
 </style>

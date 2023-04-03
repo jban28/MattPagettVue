@@ -1,5 +1,6 @@
 <script setup>
   import ZoomWindow from '../components/zoom-window.vue';
+  import FadeTransition from '../transitions/fade-transition.vue';
   import { useRoute } from 'vue-router';
   const captions = {
         "bodies": {
@@ -119,13 +120,15 @@
 </script>
 
 <template>
-  <div class="image-header">
+  <FadeTransition appear>
+    <div class="image-header">
 
-    <p class="caption">
-      <router-link :to='"./" + last'><span class="material-icons">west</span></router-link>
-      <router-link :to='"./" + next'><span class="material-icons">east</span></router-link>
-      {{ caption }}</p>
-  </div>
+      <p class="caption">
+        <router-link :to='"./" + last'><span class="material-icons">west</span></router-link>
+        <router-link :to='"./" + next'><span class="material-icons">east</span></router-link>
+        {{ caption }}</p>
+    </div>
+  </FadeTransition>
 
   <ZoomWindow :source='"../src/assets/images/2480 " + $route.params.series + "/2480_" + $route.params.series + "_" + $route.params.image + ".jpg"'/>    
   
