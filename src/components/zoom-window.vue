@@ -272,7 +272,7 @@
     padding: 6px 12px;
     margin: auto;
     overflow: visible;
-    color: #cc0000;
+    color: var(--color-1);
     max-width: 1000px;
     width: 100%;
     height: 36px;
@@ -304,7 +304,7 @@
   }
 
   ::-webkit-slider-runnable-track {
-    background: #ddd;
+    background: var(--color-3);
   }
 
   /*
@@ -316,33 +316,33 @@
     -webkit-appearance: none;
     width: 16px; /* 1 */
     height: 16px;
-    background: #fff;
-    box-shadow: -200px 0 0 200px #cc0000; /* 2 */
-    border: 2px solid #999; /* 1 */
+    background: var(--color-3);
+    box-shadow: -200px 0 0 200px var(--color-1);
+    border: 1px solid var(--color-2);
   }
 
   ::-moz-range-track {
     height: 40px;
-    background: #ddd;
+    background: var(--color-3);
   }
 
   ::-moz-range-thumb {
-    background: #fff;
+    background: var(--color-3);
     height: 16px;
     width: 16px;
-    border: 3px solid #999;
+    border: 1px solid var(--color-2);
     border-radius: 0 !important;
-    box-shadow: -200px 0 0 200px #cc0000;
+    box-shadow: -200px 0 0 200px var(--color-1);
     box-sizing: border-box;
   }
 
   ::-ms-fill-lower { 
-    background: #cc0000;
+    background: var(--color-1);
   }
 
   ::-ms-thumb { 
-    background: #fff;
-    border: 2px solid #999;
+    background: var(--color-3);
+    border: 2px solid var(--color-2);
     height: 16px;
     width: 16px;
     box-sizing: border-box;
@@ -357,7 +357,7 @@
   }
 
   ::-ms-track { 
-    background: #ddd;
+    background: var(--color-3);
     color: transparent;
     height: 16px;
     border: none;
@@ -375,7 +375,7 @@
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: var(--color-2); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
 
@@ -383,18 +383,18 @@
     margin: 20% auto;
     max-width: 500px;
     padding: 12px;
-    background-color: #cc0000;
+    background-color: var(--color-1);
     vertical-align: bottom;
   }
 
   #help-close {
     float: right;
-    color: black;
+    color: var(--color-2);
     cursor: pointer;
   }
   .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #cc0000; /* Blue */
+    border: 16px solid var(--color-3);
+    border-top: 16px solid var(--color-1);
     border-radius: 50%;
     width: 120px;
     height: 120px;

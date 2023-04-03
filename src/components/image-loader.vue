@@ -15,7 +15,7 @@
 
 <template>
   <div class="frame">
-    <FadeTransition appear><div v-show="!show.showing" class="loader"></div></FadeTransition>
+    <FadeTransition><div v-show="!show.showing" class="loader"></div></FadeTransition>
     <RouterLink :to="props.route"><FadeTransition><img v-show="show.showing" class="image" :src="props.imgUrl" @load="showImg()"/></FadeTransition></RouterLink>
   </div>
 </template>
@@ -37,15 +37,15 @@
   }
 
   .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #cc0000; /* Blue */
+    border: 8px solid var(--color-3);
+    border-top: 8px solid var(--color-1);
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
+    width: 60px;
+    height: 60px;
     animation: spin 2s linear infinite;
     position: absolute;
-    left: calc(50% - 60px);
-    top: calc(50% - 60px);
+    left: calc(50% - 30px);
+    top: calc(50% - 30px);
   }
 
   @keyframes spin {

@@ -32,16 +32,16 @@
       </div>
     </nav>
   </fadeTransition>
-  <div class="filler"></div>
 </template>
 
 <style scoped>
   .navbar {
     padding-bottom: 10px;
     flex-grow: 0;
-    background-color: white;
+    background-color: var(--color-3);
     width: 100%;
-    position: fixed;
+    position: sticky;
+    top: 0px;
     z-index: 1;
   }
 
@@ -60,16 +60,16 @@
   }
 
   .router-link-active{
-    color: black;
+    color: var(--color-2);
   }
 
   .nav-link{
-    color: #cc0000;
+    color: var(--color-1);
   }
 
   .navbar-brand {
     display: none;
-    color: rgb(0, 0, 0);
+    color: var(--color-2);
     font-size: 16px;
     padding: 0px
   }
@@ -79,15 +79,8 @@
     padding: 0px;
   }
 
-  .filler {
-    width: 100%;
-    min-height: 42px;
-    max-height: 42px;
-    display: block;
-  }
-
   .hide-sm {
-    color:rgb(0, 0, 0);
+    color: var(--color-2);
   }
 
   @media screen and (max-width: 575px){

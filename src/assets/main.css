@@ -1,20 +1,29 @@
+:root {
+  --color-0: #bbbbbb;
+  --color-1: #cc0000;
+  --color-2: #000000;
+  --color-3: #f3f3f3;
+}
+
 #app {
   height: 100vh;
   display: flex;
   flex-flow: column;
+  overflow-y: scroll;
+  position: relative;
 }
 
 body {
-  background-color: #666666;
+  background-color: var(--color-0);
   font-family:'Times New Roman', Times, serif;
   align-items: center;
 }
 
 a {
-  color: #cc0000;
+  color: var(--color-1);
   text-decoration: none;
 }
 
 a:hover {
-  color: black;
+  color: var(--color-2);
 }
