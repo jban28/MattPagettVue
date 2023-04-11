@@ -252,13 +252,11 @@
   }
 
   #external-frame{
-    width: 100%;
     height: 100%;
     max-height: 100%;
-    max-width: 1000px;
     padding: 12px;
-    margin:auto;
     overflow: hidden;
+    z-index: 0;
   }
 
   #frame {
@@ -270,11 +268,8 @@
   #controls {
     cursor: pointer;
     padding: 6px 12px;
-    margin: auto;
     overflow: visible;
     color: var(--color-1);
-    max-width: 1000px;
-    width: 100%;
     height: 36px;
   }
 
@@ -292,6 +287,7 @@
   }
 
   #slider { 
+    appearance: none;
     -webkit-appearance: none;
     position: absolute;
     top: 4px;
@@ -380,11 +376,11 @@
   }
 
   #help-content {
-    margin: 20% auto;
+    margin: 100px auto;
     max-width: 500px;
     padding: 12px;
     background-color: var(--color-1);
-    vertical-align: bottom;
+    vertical-align: middle;
   }
 
   #help-close {

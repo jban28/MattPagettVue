@@ -5,7 +5,7 @@
 <template>
   <fadeTransition appear>
     <nav class="navbar navbar-expand-sm">
-      <div class="container-fluid">
+      <nav class="container-fluid">
         <router-link class="navbar-brand router-link-active" to="/"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">MATT PAGETT</span></router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
@@ -29,7 +29,7 @@
             </li>
           </ul>
         </div>
-      </div>
+      </nav>
     </nav>
   </fadeTransition>
 </template>
@@ -45,12 +45,12 @@
     z-index: 1;
   }
 
-  .navbar-toggler-icon{
-    height: 17px;
+  nav.container-fluid{
+    max-width: 1000px;
   }
 
-  .container-fluid {
-    max-width: 1000px;
+  .navbar-toggler-icon{
+    height: 17px;
   }
 
   router-link {

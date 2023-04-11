@@ -18,8 +18,7 @@ const router = createRouter({
   routes: [ 
     {
       path: "/", 
-      component: Homepage, 
-      meta: {title: "Matt Pagett | Home"}
+      component: Homepage
     },
     {
       path: "/:series",

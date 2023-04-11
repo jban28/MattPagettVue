@@ -16,7 +16,7 @@
 </script>
 
 <template>
-  <div class="gallery">
+  <div class="gallery content">
     <ImageLoader v-for='image in images' :route='"/" + $route.params.series + "/" + image.row + image.col' :img-url='image.source'/>
     <!--<router-link v-for='image in images' :to='"/" + $route.params.series + "/" + image.row + image.col'><img :src=image.source></router-link>-->
   </div>
@@ -24,9 +24,6 @@
 
 <style scoped>
   .gallery {
-    max-width: 1000px;
-    width: 100%;
-    margin: auto;
     padding: 6px;
   }
 </style>

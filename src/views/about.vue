@@ -4,7 +4,7 @@
 
 <template>
   <FadeTransition appear>
-    <p class="about">
+    <p class="about content">
       I'm an artist based in London, UK.<br/>
       <a href="mailto:matthew.pagett@gmail.com">matthew.pagett@gmail.com</a><br/><br/>
       
@@ -188,14 +188,12 @@
         </tr>
       </table>
     </p>
-  </fadeTransition>
+  </FadeTransition>
 
 </template>
 
 <style>
-  p.about {
-    margin: auto;
+  .about {
     padding: 12px;
-    max-width: 1000px;
   }
 </style>
