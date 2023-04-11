@@ -129,7 +129,7 @@
             {{ caption }}</p>
         </div>
       </FadeTransition>
-    <ZoomWindow :source='"../src/assets/images/2480 " + $route.params.series + "/2480_" + $route.params.series + "_" + $route.params.image + ".jpg"'/>    
+    <ZoomWindow :source='"/src/assets/images/2480 " + $route.params.series + "/2480_" + $route.params.series + "_" + $route.params.image + ".jpg"'/>    
     </div>
 </template>
 
