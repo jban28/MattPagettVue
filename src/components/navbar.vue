@@ -22,7 +22,7 @@
               <router-link to="/flowers"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">Flowers</span></router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/books"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">Books</span></router-link>
+              <router-link to="/designs"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">Designs</span></router-link>
             </li>
             <li class="nav-item">
               <router-link to="/about"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">About/Contact</span></router-link>

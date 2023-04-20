@@ -29,7 +29,7 @@ const router = createRouter({
       component: Image
     },
     {
-      path: "/books",
+      path: "/designs",
       component: Books
     },
     {
