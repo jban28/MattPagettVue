@@ -9,7 +9,7 @@
   else if (series == "flowers") {last = 19;}
   for (let i = 1; ; i++) {
     for (let j of indices) {
-      images.push({row: i, col: j, source: "/src/assets/images/360 " + series +  "/360_" + series + "_" + i + j + ".jpg"});
+      images.push({row: i, col: j, source: "../assets/images/360 " + series +  "/360_" + series + "_" + i + j + ".jpg"});
     }
     if (i == last) {break};
   }

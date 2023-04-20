@@ -1,15 +1,19 @@
 <script setup>
   import { onMounted } from 'vue';
   import FadeTransition from '../transitions/fade-transition.vue';
-  import { reactive } from 'vue'
+  import { reactive } from 'vue';
 
-  defineProps({
+  const props = defineProps({
     source: String,
   })
 
   let show = reactive({showing: false});
   let showImg = function () {
     show.showing = true;
+  }
+
+  let getURL = function () {
+    return new URL(props.source, import.meta.url);
   }
 
   onMounted(() => {
@@ -230,7 +234,7 @@
   <div id="external-frame">
     <div id="frame">
       <FadeTransition><div v-show="!show.showing" class="loader"></div></fadeTransition>
-      <FadeTransition><img v-show="show.showing" @load="showImg()" id= "image" :src='source'/></fadeTransition>
+      <FadeTransition><img v-show="show.showing" @load="showImg()" id= "image" :src="getURL()"/></fadeTransition>
     </div>
   </div>
     

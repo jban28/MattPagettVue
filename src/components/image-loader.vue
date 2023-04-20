@@ -7,6 +7,10 @@
     route: String
   })
 
+  let getURL = function () {
+    return new URL(props.imgUrl, import.meta.url);
+  }
+
   let show = reactive({showing: false});
   let showImg = function () {
     show.showing = true;
@@ -16,7 +20,7 @@
 <template>
   <div class="frame">
     <FadeTransition><div v-show="!show.showing" class="loader"></div></FadeTransition>
-    <RouterLink :to="props.route"><FadeTransition><img v-show="show.showing" class="image" :src="props.imgUrl" @load="showImg()"/></FadeTransition></RouterLink>
+    <RouterLink :to="props.route"><FadeTransition><img v-show="show.showing" class="image" :src="getURL()" @load="showImg()"/></FadeTransition></RouterLink>
   </div>
 </template>
 
