@@ -39,16 +39,19 @@
     frame.scrollBy({behavior: 'smooth'});
 
     let fitWindow = function(){
-      if ((image.naturalHeight/frame.offsetHeight) > (image.naturalWidth/frame.offsetWidth)) {
+      let minDimension = Math.min(frame.offsetHeight, frame.offsetWidth);
+      image.width = frame.offsetWidth;
+      image.height = image.naturalHeight * (image.width / image.naturalWidth);
+      /*if ((image.naturalHeight/frame.offsetHeight) > (image.naturalWidth/frame.offsetWidth)) {
         image.height = frame.offsetHeight;
         image.width = image.naturalWidth * (image.height / image.naturalHeight);
       }
       else {
         image.width = frame.offsetWidth;
         image.height = image.naturalHeight * (image.width / image.naturalWidth);
-      }
+      }*/
       zoomValue = image.height/image.naturalHeight;
-      slider.min = zoomValue;
+      slider.min = minDimension/image.naturalHeight;
       slider.value = zoomValue;
     }
 
@@ -275,6 +278,10 @@
     overflow: visible;
     color: var(--color-1);
     height: 36px;
+  }
+
+  #help-button{
+    display: none;
   }
 
   .material-icons {

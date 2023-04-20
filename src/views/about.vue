@@ -4,7 +4,8 @@
 
 <template>
   <FadeTransition appear>
-    <p class="about content">
+    <div class="content">    
+      <p class="about">
       I'm an artist based in London, UK.<br/>
       <a href="mailto:matthew.pagett@gmail.com">matthew.pagett@gmail.com</a><br/><br/>
       
@@ -14,7 +15,7 @@
       
       I've been a bookseller, a digital TV/web designer, a freelance writer/illustrator, a hospital radio DJ and the cloakroom attendant at London's last-remaining leather bar.
       I currently work at <a href="https://arthouseunlimited.org/">Arthouse</a> as an art instructor/designer and host a fortnightly, men-only <a href="https://instagram.com/lifedrawingatthebackstreet">life drawing session</a> at
-      a hair salon in Dalston, London.<br/>
+      a hair salon in Dalston, London.<br/><br/>
 
       <table>
         <tr>
@@ -187,7 +188,8 @@
           <td>Natural Forms Drawing Prize, RCA, London</td>
         </tr>
       </table>
-    </p>
+    </p></div>
+
   </FadeTransition>
 
 </template>
@@ -195,5 +197,7 @@
 <style>
   .about {
     padding: 12px;
+    max-width: 666px;
+    margin: auto;
   }
 </style>

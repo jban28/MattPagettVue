@@ -23,7 +23,4 @@
 </template>
 
 <style scoped>
-  .gallery {
-    padding: 6px;
-  }
 </style>

@@ -13,7 +13,7 @@
         <div class="navbar-collapse collapse" id="collapsibleNavbar">
           <ul class="navbar-nav w-100 justify-content-between">
             <li class="nav-item hide-sm">
-              <router-link class="router-link-active" to="/" ><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">MATT PAGETT</span></router-link>
+              <router-link class="router-link-active" to="/" ><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show"><strong>MATT PAGETT</strong></span></router-link>
             </li>
             <li class="nav-item">
               <router-link to="/bodies"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">Bodies</span></router-link>
@@ -38,7 +38,7 @@
   .navbar {
     padding-bottom: 10px;
     flex-grow: 0;
-    background-color: var(--color-3);
+    background-color: var(--color-0);
     width: 100%;
     position: sticky;
     top: 0px;

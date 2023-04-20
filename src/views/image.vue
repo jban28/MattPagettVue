@@ -123,10 +123,10 @@
     <div class="fill content">
       <FadeTransition>
         <div class="image-header">
-          <p class="caption">
+          <p class="caption">{{ caption }}
             <router-link :to='"./" + last'><span class="material-icons">west</span></router-link>
             <router-link :to='"./" + next'><span class="material-icons">east</span></router-link>
-            {{ caption }}</p>
+            </p>
         </div>
       </FadeTransition>
     <ZoomWindow :source='"/images/2480 " + $route.params.series + "/2480_" + $route.params.series + "_" + $route.params.image + ".jpg"'/>    
