@@ -16,7 +16,7 @@
 body {
   font-family:'Times New Roman', Times, serif;
   align-items: center;
-  background-image: url("../assets/images/index.jpg");
+  background-image: url("/images/index.jpg");
   background-attachment: fixed;
   min-height: 100%; 
   background-position: center;

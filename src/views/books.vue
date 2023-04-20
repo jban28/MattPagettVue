@@ -4,7 +4,7 @@
 
 <template>
   <div class="fill content">
-    <ZoomWindow source='../assets/images/books.jpg'/>
+    <ZoomWindow source='/images/books.jpg'/>
   </div>
     
 </template>
