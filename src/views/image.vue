@@ -142,7 +142,7 @@
   .image-header {
     max-width: 1000px;
     width: 100%;
-    padding: 6px 12px;
+    padding: 6px;
     margin: auto;
     position: relative;
     vertical-align: top;

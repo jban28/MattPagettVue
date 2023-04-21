@@ -19,10 +19,10 @@
 
       <table>
         <tr>
-          EDUCATION
+          <td colspan="2">EDUCATION</td>
         </tr>
         <tr>
-          <td>1990-1</td>
+          <td style="width: 9ch">1990-1</td>
           <td>Foundation in Art and Design, Bournville College of Art, Birmingham</td>
         </tr>
         <tr>
@@ -45,10 +45,11 @@
       <br>
       <table>
         <tr>
-          SELECTED EXHIBITIONS (*solo)
+          <td colspan="2">SELECTED EXHIBITIONS</td>
+           (*solo)
         </tr>
         <tr>
-          <td>2022</td>
+          <td style="width: 9ch">2022</td>
           <td>Backstreet Reunion, Bishopsgate Institute, London*</td>
         </tr>
         <tr>
@@ -155,14 +156,17 @@
           <td>2003</td>
           <td>7th International Film Festival, Split, Croatia</td>
         </tr>
+        <tr>
+          <td colspan="2">(*solo)</td>
+        </tr>
       </table>
       <br/>
       <table>
         <tr>
-          RESIDENCIES/EXCHANGES
+          <td colspan="2">RESIDENCIES/EXCHANGES</td>
         </tr>
         <tr>
-          <td>2011</td>
+          <td style="width: 9ch">2011</td>
           <td>Hochschule f&#252;r Grafik und Buchkunst, Leipzig, Germany</td>
         </tr>
         <tr>
@@ -173,10 +177,10 @@
       <br/>
       <table>
         <tr>
-          AWARDS
+          <td colspan="2">AWARDS</td>
         </tr>
         <tr>
-          <td>2022</td>
+          <td style="width: 9ch">2022</td>
           <td>Palanca Fantasy Award, Tom of Finland Foundation</td>
         </tr>
         <tr>
@@ -196,8 +200,8 @@
 
 <style>
   .about {
-    padding: 12px;
-    max-width: 666px;
-    margin: auto;
+    padding: 0px;
+    max-width: calc(200% - 100vw + 36px);
+    margin: 12px auto;
   }
 </style>

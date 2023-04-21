@@ -6,7 +6,7 @@
   <fadeTransition appear>
     <nav class="navbar navbar-expand-sm">
       <nav class="container-fluid">
-        <router-link class="navbar-brand router-link-active" to="/"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">MATT PAGETT</span></router-link>
+        <router-link class="navbar-brand router-link-active" to="/"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show"><strong>MATT PAGETT</strong></span></router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -36,7 +36,7 @@
 
 <style scoped>
   .navbar {
-    padding-bottom: 10px;
+    padding: 4px 0px;
     flex-grow: 0;
     background-color: var(--color-0);
     width: 100%;
@@ -71,12 +71,16 @@
     display: none;
     color: var(--color-2);
     font-size: 16px;
-    padding: 0px
+    padding: 5px 0px;
   }
 
   .navbar-toggler {
     border: none;
-    padding: 0px;
+    padding: 5px 0px;
+  }
+
+  .nav-item {
+    padding: 5px 0px;
   }
 
   .hide-sm {

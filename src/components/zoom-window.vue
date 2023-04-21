@@ -261,7 +261,7 @@
   #external-frame{
     height: 100%;
     max-height: 100%;
-    padding: 12px;
+    padding: 6px;
     overflow: hidden;
     z-index: 0;
   }
@@ -274,7 +274,7 @@
 
   #controls {
     cursor: pointer;
-    padding: 6px 12px;
+    padding: 6px;
     overflow: visible;
     color: var(--color-1);
     height: 36px;
