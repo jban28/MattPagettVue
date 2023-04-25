@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 
 import { createApp } from 'vue'
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory} from "vue-router";
 import App from './App.vue'
 import Homepage from './views/homepage.vue'
 import About from './views/about.vue'
@@ -15,7 +15,7 @@ import './assets/main.css'
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [ 
+  routes: [
     {
       path: "/", 
       component: Homepage
