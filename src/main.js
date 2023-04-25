@@ -9,6 +9,7 @@ import About from './views/about.vue'
 import Gallery from './views/gallery.vue'
 import Image from './views/image.vue'
 import Books from './views/books.vue'
+import NotFound from './views/not-found.vue'
 
 import './assets/main.css'
 
@@ -35,6 +36,10 @@ const router = createRouter({
     {
       path: "/about",
       component: About
+    },
+    {
+      path: "/not-found",
+      component: NotFound
     }
   ]
 })
