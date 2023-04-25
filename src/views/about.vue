@@ -62,7 +62,7 @@
         </tr>
         <tr>
           <td>2020</td>
-          <td>Quuer Art(ists) Now, Archive Gallery, London</td>
+          <td>Queer Art(ists) Now, Archive Gallery, London</td>
         </tr>
         <tr>
           <td>2019</td>

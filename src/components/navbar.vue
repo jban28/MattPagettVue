@@ -6,26 +6,26 @@
   <fadeTransition appear>
     <nav class="navbar navbar-expand-sm">
       <nav class="container-fluid">
-        <router-link class="navbar-brand router-link-active" to="/"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show"><strong>MATT PAGETT</strong></span></router-link>
+        <router-link class="navbar-brand" to="/"><span class="black bold" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">MATT PAGETT</span></router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse collapse" id="collapsibleNavbar">
           <ul class="navbar-nav w-100 justify-content-between">
             <li class="nav-item hide-sm">
-              <router-link class="router-link-active" to="/" ><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show"><strong>MATT PAGETT</strong></span></router-link>
+              <router-link to="/" ><span class="black bold" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">MATT PAGETT</span></router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/bodies"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">Bodies</span></router-link>
+              <router-link to="/bodies"><span class="red" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">Bodies</span></router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/flowers"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">Flowers</span></router-link>
+              <router-link to="/flowers"><span class="green" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">Flowers</span></router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/designs"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">Designs</span></router-link>
+              <router-link to="/designs"><span class="blue" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">Designs</span></router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/about"><span data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">About/Contact</span></router-link>
+              <router-link to="/about"><span class="black" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">About/Contact</span></router-link>
             </li>
           </ul>
         </div>
@@ -36,7 +36,7 @@
 
 <style scoped>
   .navbar {
-    padding: 4px 0px;
+    padding: 15px 0px;
     flex-grow: 0;
     background-color: var(--color-0);
     width: 100%;
@@ -63,10 +63,6 @@
     color: var(--color-2);
   }
 
-  .nav-link{
-    color: var(--color-1);
-  }
-
   .navbar-brand {
     display: none;
     color: var(--color-2);
@@ -81,6 +77,11 @@
 
   .nav-item {
     padding: 5px 0px;
+    font-weight: 500;
+  }
+
+  .bold {
+    font-weight: 800;
   }
 
   .hide-sm {

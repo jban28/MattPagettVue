@@ -5,6 +5,22 @@
   --color-3: #f3f3f3;
 }
 
+.red {
+  color: #993333;
+}
+
+.green {
+  color: #336633;
+}
+
+.blue {
+  color: #333366;
+}
+
+.black {
+  color: #000000;
+}
+
 #app {
   height: 100vh;
   display: flex;
@@ -39,7 +55,7 @@ body {
 .fill {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 42px);
+  height: calc(100vh - 64px);
 }
 
 a {
