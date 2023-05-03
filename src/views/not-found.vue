@@ -2,10 +2,15 @@
 </script>
 
 <template>
-  <div class="content">
-    <h1>The url you are looking for was not found.</h1>
+  <div class="content fill center">
+    <h1>Error 404</h1>
+    <p>The page you were looking for could not be found</p>
+    <RouterLink to="/">Go to homepage</RouterLink>
   </div>
 </template>
 
 <style>
+  .center {
+    text-align: center;
+  }
 </style>
