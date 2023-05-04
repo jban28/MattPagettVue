@@ -47,8 +47,7 @@
         <br>
         <table>
           <tr>
-            <td colspan="2">SELECTED EXHIBITIONS</td>
-            (*solo)
+            <td colspan="2">SELECTED EXHIBITIONS (*solo)</td>
           </tr>
           <tr>
             <td style="width: 9ch">2022</td>
@@ -157,9 +156,6 @@
           <tr>
             <td>2003</td>
             <td>7th International Film Festival, Split, Croatia</td>
-          </tr>
-          <tr>
-            <td colspan="2">(*solo)</td>
           </tr>
         </table>
         <br/>

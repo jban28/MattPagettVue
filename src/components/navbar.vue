@@ -46,6 +46,7 @@
 
   nav.container-fluid{
     max-width: 1000px;
+    padding: 0px 24px;
   }
 
   .navbar-toggler-icon{
