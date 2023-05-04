@@ -4,13 +4,12 @@
 
   const props = defineProps({
     imageSet: Array,
-    accentColor: String
   })
 </script>
 
 <template>
   <Content>
-    <ImageLoader v-for='image in imageSet' :route='image.url' :img-url='image.srcThumb' :accent-color='accentColor'/>
+    <ImageLoader v-for='image in imageSet' :route='image.url' :img-url='image.srcThumb'/>
 </Content>
 </template>
 

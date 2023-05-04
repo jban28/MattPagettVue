@@ -379,15 +379,15 @@
   }
 
   .loader {
-    border: 16px solid var(--grey);
-    border-top: 16px solid v-bind('accentColor');
+    border: 8px solid var(--grey);
+    border-top: 8px solid var(--darkGrey);
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
+    width: 60px;
+    height: 60px;
+    animation: spin 5s linear infinite;
     position: absolute;
-    left: calc(50% - 60px);
-    top: calc(50%);
+    left: calc(50% - 30px);
+    top: calc(50% + 30px);
   }
 
   @keyframes spin {

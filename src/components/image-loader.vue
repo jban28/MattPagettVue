@@ -4,8 +4,7 @@
 
   const props = defineProps({
     imgUrl: String,
-    route: String,
-    accentColor: String
+    route: String
   })
 
   let getURL = function () {
@@ -43,15 +42,15 @@
   }
 
   .loader {
-    border: 8px solid var(--grey);
-    border-top: 8px solid v-bind('accentColor');
+    border: 4px solid var(--grey);
+    border-top: 4px solid var(--darkGrey);
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     animation: spin 5s linear infinite;
     position: absolute;
-    left: calc(50% - 30px);
-    top: calc(50% - 30px);
+    left: calc(50% - 15px);
+    top: calc(50% - 15px);
   }
 
   @keyframes spin {
