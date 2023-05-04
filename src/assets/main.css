@@ -39,3 +39,7 @@ body {
 .button:hover {
   color: var(--darkGrey);
 }
+
+a {
+  text-decoration: none;
+}

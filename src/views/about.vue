@@ -203,9 +203,9 @@
     margin: 0px auto;
   }
 
-  a {
-    color: v-bind('accentColor');
-    text-decoration: none;
+  a.button {
+    color: black;
+    text-decoration: underline;
   }
   
   p {
