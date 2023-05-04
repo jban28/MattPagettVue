@@ -1,10 +1,11 @@
 <script setup>
+  import FadeTransition from '../transitions/fade-transition.vue';
 </script>
 
 <template>
-  <div class="content">
-    <slot></slot>
-  </div>
+    <div class="content">
+      <slot></slot>
+    </div>
 </template>
 
 <style>

@@ -10,7 +10,7 @@
 <template>
   <Content>
     <ImageLoader v-for='image in imageSet' :route='image.url' :img-url='image.srcThumb'/>
-</Content>
+  </Content>
 </template>
 
 <style scoped>
