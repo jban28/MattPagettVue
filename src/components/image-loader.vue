@@ -48,7 +48,7 @@
     border-radius: 50%;
     width: 60px;
     height: 60px;
-    animation: spin 2s linear infinite;
+    animation: spin 5s linear infinite;
     position: absolute;
     left: calc(50% - 30px);
     top: calc(50% - 30px);

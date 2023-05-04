@@ -5,6 +5,7 @@
   --blue: #333366;
   --black: #000000;
   --grey: #f3f3f3;
+  --darkGrey: #595959;
 }
 
 .red {
@@ -46,7 +47,7 @@ body {
   max-width: 1000px;
   width: 100%;
   margin: auto;
-  padding: 0px 6px;
+  padding: 0px 6px 6px;
   border-width: 0px 12px;
   border-style: solid;
   border-color: #00000000;
@@ -58,4 +59,8 @@ body {
   display: flex;
   flex-direction: column;
   height: calc(100vh - 64px);
+}
+
+.button:hover {
+  color: var(--darkGrey);
 }

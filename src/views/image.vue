@@ -220,10 +220,10 @@
       </FadeTransition>
       <FadeTransition appear>
         <div id="controls">
-          <span class="material-icons" v-if='previousImage!==undefined' @click='router.push(previousImage.url)'>chevron_left</span>
-          <span class="material-icons" v-if='nextImage!==undefined' @click='router.push(nextImage.url)'>chevron_right</span>
-          <span id="full-screen" class="material-icons">fullscreen</span>
-          <span id="slider-box" class="material-icons"><input type="range" min="0" max="1" value="0" step="0.01" id="slider" label="zoom"/></span>
+          <span class="material-icons button" v-if='previousImage!==undefined' @click='router.push(previousImage.url)'>chevron_left</span>
+          <span class="material-icons button" v-if='nextImage!==undefined' @click='router.push(nextImage.url)'>chevron_right</span>
+          <span id="full-screen" class="material-icons button">fullscreen</span>
+          <span id="slider-box" class="material-icons button"><input type="range" min="0" max="1" value="0" step="0.01" id="slider" label="zoom"/></span>
         </div>
       </FadeTransition>
       <div id="external-frame">
@@ -286,11 +286,6 @@
     overflow: visible;
     color: v-bind('accentColor');
     height: 36px;
-  }
-
-  .material-icons {
-    color: inherit;
-    float: bottom;
   }
 
   #slider-box {
