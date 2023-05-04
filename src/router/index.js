@@ -941,7 +941,11 @@ flowers.forEach(function (image) {
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: routesArray
+  routes: routesArray,
+  scrollBehavior(to, from, savedPosition) {
+    // always scroll to top
+    return { top: 0 }
+  },
 })
 
 export default router

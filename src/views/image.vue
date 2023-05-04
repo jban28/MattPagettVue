@@ -282,7 +282,7 @@
 
   #controls {
     cursor: pointer;
-    padding: 6px;
+    padding: 0px 6px;
     overflow: visible;
     color: v-bind('accentColor');
     height: 36px;

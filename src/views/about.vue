@@ -203,7 +203,7 @@
   .about {
     padding: 6px;
     max-width: 812px/*calc(200% - 100vw + 36px)*/;
-    margin: 6px auto;
+    margin: 0px auto;
   }
 
   a {
