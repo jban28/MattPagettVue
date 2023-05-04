@@ -220,8 +220,8 @@
       </FadeTransition>
       <FadeTransition appear>
         <div id="controls">
-          <span class="material-icons" v-if='previousImage!==undefined' @click='router.push(previousImage.url)'>west</span>
-          <span class="material-icons" v-if='nextImage!==undefined' @click='router.push(nextImage.url)'>east</span>
+          <span class="material-icons" v-if='previousImage!==undefined' @click='router.push(previousImage.url)'>chevron_left</span>
+          <span class="material-icons" v-if='nextImage!==undefined' @click='router.push(nextImage.url)'>chevron_right</span>
           <span id="full-screen" class="material-icons">fullscreen</span>
           <span id="slider-box" class="material-icons"><input type="range" min="0" max="1" value="0" step="0.01" id="slider" label="zoom"/></span>
         </div>

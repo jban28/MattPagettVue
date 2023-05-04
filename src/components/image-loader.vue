@@ -28,17 +28,17 @@
 <style scoped>
   .frame {
     width: 33.3333%;
-    height: calc(33.333cqw - 9px);
-    max-height: 329px;
+    aspect-ratio: 1/1;
     margin: 0px;
-    display: inline-block;
+    /*inline-block leaves space for descenders (e.g: letter y or g) so space between rows is wrong*/
+    display: inline-flex;
     position: relative;
     padding: 6px;
   }
 
   .image {
-    width: 100%;
-    height: 100%;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
     position: absolute;
   }
 

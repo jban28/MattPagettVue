@@ -201,9 +201,9 @@
 
 <style>
   .about {
-    padding: 0px;
-    max-width: calc(200% - 100vw + 36px);
-    margin: 12px auto;
+    padding: 6px;
+    max-width: 812px/*calc(200% - 100vw + 36px)*/;
+    margin: 6px auto;
   }
 
   a {
