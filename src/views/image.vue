@@ -1,5 +1,6 @@
 <script setup>
   import FadeTransition from '../transitions/fade-transition.vue';
+  import Content from '../components/content.vue';
   import { onMounted } from 'vue';
   import { reactive } from 'vue';
   import { useRouter } from 'vue-router';
@@ -45,8 +46,8 @@
 
     let fitWindow = function(){
       let minDimension = Math.min(frame.offsetHeight, frame.offsetWidth);
-      image.width = frame.offsetWidth;
-      image.height = image.naturalHeight * (image.width / image.naturalWidth);
+      image.height = frame.offsetHeight;
+      image.width = image.naturalWidth * (image.height / image.naturalHeight);
       zoomValue = image.height/image.naturalHeight;
       slider.min = minDimension/image.naturalHeight;
       slider.value = zoomValue;
@@ -212,27 +213,25 @@
 </script>
 
 <template>
-    <div class="fill content">
-      <FadeTransition>
+    <Content>
+      <div class="fill">
         <div class="image-header">
           <p class="caption">{{ image.caption }}</p>
         </div>
-      </FadeTransition>
-      <FadeTransition appear>
         <div id="controls">
           <span class="material-icons button" v-if='previousImage!==undefined' @click='router.push(previousImage.url)'>chevron_left</span>
           <span class="material-icons button" v-if='nextImage!==undefined' @click='router.push(nextImage.url)'>chevron_right</span>
           <span id="full-screen" class="material-icons button">fullscreen</span>
           <span id="slider-box" class="material-icons button"><input type="range" min="0" max="1" value="0" step="0.01" id="slider" label="zoom"/></span>
         </div>
-      </FadeTransition>
-      <div id="external-frame">
-        <div id="frame">
-          <FadeTransition><div v-show="!show.showing" class="loader"></div></fadeTransition>
-          <FadeTransition><img v-show="show.showing" @load="showImg()" id= "image" :src="getURL(image.srcFull)"/></fadeTransition>
-        </div>
-      </div>   
-    </div>
+        <div id="external-frame" class="fill">
+          <div id="frame">
+            <div v-show="!show.showing" class="loader"></div>
+            <img v-show="show.showing" @load="showImg()" id= "image" :src="getURL(image.srcFull)"/>
+          </div>
+        </div>   
+      </div>
+    </Content>
 </template>
 
 <style scoped>
@@ -272,6 +271,12 @@
     padding: 6px;
     overflow: hidden;
     z-index: 0;
+  }
+
+  .fill {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 78px);
   }
 
   #frame {

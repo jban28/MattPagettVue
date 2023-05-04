@@ -20,8 +20,8 @@
 
 <template>
   <div class="frame">
-    <FadeTransition><div v-show="!show.showing" class="loader"></div></FadeTransition>
-    <RouterLink :to="props.route"><FadeTransition><img v-show="show.showing" class="image" :src="getURL()" @load="showImg()"/></FadeTransition></RouterLink>
+    <div v-show="!show.showing" class="loader"></div>
+    <RouterLink :to="props.route"><img v-show="show.showing" class="image" :src="getURL()" @load="showImg()"/></RouterLink>
   </div>
 </template>
 

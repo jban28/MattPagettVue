@@ -3,7 +3,6 @@
 </script>
 
 <template>
-  <fadeTransition appear>
     <nav class="navbar navbar-expand-sm">
       <nav class="container-fluid">
         <router-link class="navbar-brand" to="/"><span class="black bold button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">MATT PAGETT</span></router-link>
@@ -31,7 +30,6 @@
         </div>
       </nav>
     </nav>
-  </fadeTransition>
 </template>
 
 <style scoped>
@@ -43,6 +41,7 @@
     position: sticky;
     top: 0px;
     z-index: 1;
+    font-size: 20px;
   }
 
   nav.container-fluid{
@@ -56,7 +55,7 @@
   .navbar-brand {
     display: none;
     color: var(--black);
-    font-size: 16px;
+    font-size: inherit;
     padding: 5px 0px;
   }
 
@@ -67,11 +66,11 @@
 
   .nav-item {
     padding: 5px 0px;
-    font-weight: 500;
+    font-weight: 501;
   }
 
   .bold {
-    font-weight: 800;
+    font-weight: 1000;
   }
 
   @media screen and (max-width: 575px){
