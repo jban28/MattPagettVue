@@ -1,5 +1,6 @@
 <script setup>
   import FadeTransition from '../transitions/fade-transition.vue'
+  let accentColor = "var(--red)"
 </script>
 
 <template>
@@ -203,5 +204,14 @@
     padding: 0px;
     max-width: calc(200% - 100vw + 36px);
     margin: 12px auto;
+  }
+
+  a {
+    color: v-bind('accentColor');
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--black);
   }
 </style>

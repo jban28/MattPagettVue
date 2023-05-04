@@ -4,7 +4,8 @@
 
   const props = defineProps({
     imgUrl: String,
-    route: String
+    route: String,
+    accentColor: String
   })
 
   let getURL = function () {
@@ -38,11 +39,12 @@
   .image {
     width: 100%;
     height: 100%;
+    position: absolute;
   }
 
   .loader {
-    border: 8px solid var(--color-3);
-    border-top: 8px solid var(--color-1);
+    border: 8px solid var(--grey);
+    border-top: 8px solid v-bind('accentColor');
     border-radius: 50%;
     width: 60px;
     height: 60px;

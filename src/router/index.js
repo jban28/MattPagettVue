@@ -860,7 +860,8 @@ let routesArray = [
     component: Gallery,
     name: "bodies",
     props: {
-      imageSet: bodies
+      imageSet: bodies,
+      accentColor: "var(--red)"
     }
   },
   {
@@ -868,7 +869,8 @@ let routesArray = [
     component: Gallery,
     name: "flowers",
     props: {
-      imageSet: flowers
+      imageSet: flowers,
+      accentColor: "var(--green)"
     }
   },
   {
@@ -884,7 +886,8 @@ let routesArray = [
         "series": "designs"
       },
       nextImage: undefined,
-      previousImage: undefined
+      previousImage: undefined,
+      accentColor: "var(--blue)"
     }
   },
   {
@@ -910,7 +913,8 @@ bodies.forEach(function (image) {
     props: {
       image: image,
       nextImage: next,
-      previousImage: previous
+      previousImage: previous,
+      accentColor: "var(--red)"
     }
   })
   previous = image;
@@ -928,7 +932,8 @@ flowers.forEach(function (image) {
     props: {
       image: image,
       nextImage: next,
-      previousImage: previous
+      previousImage: previous,
+      accentColor: "var(--green)"
     }
   })
   previous = image;

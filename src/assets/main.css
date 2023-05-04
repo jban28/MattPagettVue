@@ -1,24 +1,26 @@
 :root {
-  --color-0: #ffffff;
-  --color-1: #cc0000;
-  --color-2: #000000;
-  --color-3: #f3f3f3;
+  --white: #ffffff;
+  --red: #993333;
+  --green: #336633;
+  --blue: #333366;
+  --black: #000000;
+  --grey: #f3f3f3;
 }
 
 .red {
-  color: #993333;
+  color: var(--red);
 }
 
 .green {
-  color: #336633;
+  color: var(--green)
 }
 
 .blue {
-  color: #333366;
+  color: var(--blue);
 }
 
 .black {
-  color: #000000;
+  color: var(--black);
 }
 
 #app {
@@ -49,20 +51,11 @@ body {
   border-style: solid;
   border-color: #00000000;
   background-clip: padding-box;
-  background-color: var(--color-0);
+  background-color: var(--white);
 }
 
 .fill {
   display: flex;
   flex-direction: column;
   height: calc(100vh - 64px);
-}
-
-a {
-  color: var(--color-1);
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--color-2);
 }

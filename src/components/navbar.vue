@@ -38,7 +38,7 @@
   .navbar {
     padding: 15px 0px;
     flex-grow: 0;
-    background-color: var(--color-0);
+    background-color: var(--white);
     width: 100%;
     position: sticky;
     top: 0px;
@@ -60,12 +60,12 @@
   }
 
   .router-link-active{
-    color: var(--color-2);
+    color: var(--black);
   }
 
   .navbar-brand {
     display: none;
-    color: var(--color-2);
+    color: var(--black);
     font-size: 16px;
     padding: 5px 0px;
   }
@@ -85,7 +85,7 @@
   }
 
   .hide-sm {
-    color: var(--color-2);
+    color: var(--black);
   }
 
   @media screen and (max-width: 575px){
