@@ -2,8 +2,8 @@
   import FadeTransition from '../transitions/fade-transition.vue';
   import Content from '../components/content.vue';
   import { onMounted } from 'vue';
-  import { reactive } from 'vue';
   import { useRouter } from 'vue-router';
+  import { ref, reactive, watch } from 'vue';
 
   const router = useRouter();
 
@@ -20,9 +20,13 @@
     show.showing = true;
   }
 
-  let getURL = function (url) {
-    return new URL(url, import.meta.url);
-  }
+  const src = ref()
+  watch(
+    () => props.image.url,
+    () => {
+    src.value = new URL(props.image.srcFull, import.meta.url)
+    show.showing = false
+  }, {immediate: true})
 
   onMounted(() => {
     const image = document.querySelector("#image");
@@ -227,7 +231,7 @@
         <div id="external-frame" class="fill">
           <div id="frame">
             <FadeTransition appear><div v-show="!show.showing" class="loader"></div></FadeTransition>
-            <img v-show="show.showing" @load="showImg()" id= "image" :src="getURL(image.srcFull)"/>
+            <FadeTransition><img v-show="show.showing" @load="showImg()" id= "image" :src="src"/></FadeTransition>
             
           </div>
         </div>   

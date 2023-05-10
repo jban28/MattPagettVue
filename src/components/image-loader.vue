@@ -1,6 +1,6 @@
 <script setup>
   import FadeTransition from '../transitions/fade-transition.vue';
-  import { reactive } from 'vue'
+  import { ref, reactive, watch } from 'vue'
 
   const props = defineProps({
     imgUrl: String,
@@ -15,12 +15,20 @@
   let showImg = function () {
     show.showing = true;
   }
+
+  const src = ref()
+  watch(
+    () => props.imgUrl,
+    () => {
+    src.value = new URL(props.imgUrl, import.meta.url)
+    show.showing = false
+  }, {immediate: true})
 </script>
 
 <template>
   <div class="frame">
     <FadeTransition><div v-show="!show.showing" class="loader"></div></FadeTransition>
-    <RouterLink :to="props.route"><FadeTransition><img v-show="show.showing" class="image" :src="getURL()" @load="showImg()"/></FadeTransition></RouterLink>
+    <router-link :to="props.route"><FadeTransition><img v-show="show.showing" class="image" :src="src" @load="showImg()"/></FadeTransition></router-link>
   </div>
 </template>
 
