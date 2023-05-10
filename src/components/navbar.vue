@@ -1,8 +1,9 @@
 <script setup>
-  import fadeTransition from '../transitions/fade-transition.vue'
+  import FadeTransition from '../transitions/fade-transition.vue'
 </script>
 
 <template>
+  <FadeTransition appear>
     <nav class="navbar navbar-expand-sm">
       <nav class="container-fluid">
         <router-link class="navbar-brand" to="/"><span class="black bold button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">MATT PAGETT</span></router-link>
@@ -14,22 +15,23 @@
             <li class="nav-item hide-sm">
               <router-link to="/" ><span class="black bold button">MATT PAGETT</span></router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">
               <router-link to="/bodies"><span class="red button">Bodies</span></router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">
               <router-link to="/flowers"><span class="green button">Flowers</span></router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">
               <router-link to="/designs"><span class="blue button">Designs etc.</span></router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">
               <router-link to="/about"><span class="black button">About</span></router-link>
             </li>
           </ul>
         </div>
       </nav>
     </nav>
+  </FadeTransition>
 </template>
 
 <style scoped>
@@ -67,11 +69,10 @@
 
   .nav-item {
     padding: 5px 0px;
-    font-weight: 501;
   }
 
   .bold {
-    font-weight: 1000;
+    font-weight: bold;
   }
 
   @media screen and (max-width: 575px){

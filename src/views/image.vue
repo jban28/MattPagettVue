@@ -46,8 +46,8 @@
 
     let fitWindow = function(){
       let minDimension = Math.min(frame.offsetHeight, frame.offsetWidth);
-      image.height = frame.offsetHeight;
-      image.width = image.naturalWidth * (image.height / image.naturalHeight);
+      image.height = minDimension;
+      image.width = minDimension;
       zoomValue = image.height/image.naturalHeight;
       slider.min = minDimension/image.naturalHeight;
       slider.value = zoomValue;
@@ -226,8 +226,9 @@
         </div>
         <div id="external-frame" class="fill">
           <div id="frame">
-            <div v-show="!show.showing" class="loader"></div>
+            <FadeTransition appear><div v-show="!show.showing" class="loader"></div></FadeTransition>
             <img v-show="show.showing" @load="showImg()" id= "image" :src="getURL(image.srcFull)"/>
+            
           </div>
         </div>   
       </div>

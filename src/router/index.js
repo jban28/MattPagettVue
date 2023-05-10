@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory} from "vue-router";
+import { createRouter, createWebHistory, onBeforeRouteLeave} from "vue-router";
 import Homepage from '../views/homepage.vue'
 import About from '../views/about.vue'
 import Gallery from '../views/gallery.vue'
@@ -947,5 +947,15 @@ const router = createRouter({
     return { top: 0 }
   },
 })
+
+router.afterEach((to, from) => {
+  if ((from.path == "/") || (from.path == "")) {
+    to.meta.transitionMode = "in-out";
+  }
+  else {
+    to.meta.transitionMode = "out-in"
+  }
+})
+
 
 export default router
