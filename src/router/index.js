@@ -943,9 +943,11 @@ const router = createRouter({
   history: createWebHistory(),
   routes: routesArray,
   scrollBehavior(to, from, savedPosition) {
-    // always scroll to top
-    return { top: 0 }
-  },
+    return { 
+      top: 0,
+      behaviour: "instant" 
+    }
+  }
 })
 
 router.afterEach((to, from) => {
