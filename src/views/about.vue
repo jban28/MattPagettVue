@@ -15,9 +15,11 @@
         Whatever the subject, there's always a wider theme at the back of my mind: how do I, as someone compelled to make images with my hands,  
         deal with the status and prevalence of the modern digital image - pixelated, ghostly, disposable etc?<br/><br/>
         
-        I've been a bookseller, a digital TV/web designer, a freelance writer/illustrator, a hospital radio DJ and the cloakroom attendant at London's last-remaining leather bar.
-        I currently work at <a href="https://arthouseunlimited.org/" class="button">Arthouse</a> as an art instructor/designer and host a fortnightly, men-only <a href="https://instagram.com/lifedrawingatthebackstreet" class="button">life drawing session</a> at
-        a hair salon in Dalston, London.<br/><br/>
+        I've been a bookseller, a digital TV/web designer, a freelance writer/illustrator, a hospital radio DJ, an art instructor/graphic designer for 
+        <a href="https://arthouseunlimited.org/" class="button">ARTHOUSE Unlimited</a> and the cloakroom attendant at London's last-remaining leather bar. 
+        I currently organise and host a fortnightly, men-only <a href="https://instagram.com/lifedrawingatthebackstreet" class="button">life drawing session</a>
+        at a hair salon in Dalston, London.
+        <br/><br/>
 
         <table>
           <tr>
