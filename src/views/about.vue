@@ -190,6 +190,8 @@
             <td>Natural Forms Drawing Prize, RCA, London</td>
           </tr>
         </table>
+        <br/>
+        <em>This website was created by James Bannister, who can be contacted by emailing <a href="mailto:jd.bannister28@gmail.com" class="button">jd.bannister28@gmail.com</a>.</em>
         </p>
       </div>
     </Content> 
