@@ -13,7 +13,7 @@
         deal with the status and prevalence of the modern digital image - pixelated, ghostly, disposable etc?<br/><br/>
 
         <a href="mailto:matthew.pagett@gmail.com" class="button">matthew.pagett@gmail.com</a><br/>
-        <a href="https://instagram.com/lifedrawingatthebackstreet" class="button"><i class="fa">&#xf16d;</i> pagettmatthew</a>
+        <a href="https://www.instagram.com/pagettmatthew/" class="button"><i class="fa">&#xf16d;</i> pagettmatthew</a>
 
         <br/><br/>
 
