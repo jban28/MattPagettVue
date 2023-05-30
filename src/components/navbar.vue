@@ -16,13 +16,13 @@
               <router-link to="/" ><span class="black bold button">MATT PAGETT</span></router-link>
             </li>
             <li class="nav-item" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">
-              <router-link to="/bodies"><span class="red button">Bodies</span></router-link>
+              <router-link to="/bodies"><span class="black button">Bodies</span></router-link>
             </li>
             <li class="nav-item" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">
-              <router-link to="/flowers"><span class="green button">Flowers</span></router-link>
+              <router-link to="/flowers"><span class="black button">Flowers</span></router-link>
             </li>
             <li class="nav-item" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">
-              <router-link to="/designs"><span class="blue button">Designs etc.</span></router-link>
+              <router-link to="/designs"><span class="black button">Design etc.</span></router-link>
             </li>
             <li class="nav-item" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">
               <router-link to="/about"><span class="black button">About</span></router-link>

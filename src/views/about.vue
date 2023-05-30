@@ -8,17 +8,13 @@
     <Content>  
       <div class="about">
         <p>
-        I'm an artist based in London, UK.<br/>
-        <a href="mailto:matthew.pagett@gmail.com" class="button">matthew.pagett@gmail.com</a><br/><br/>
-        
-        This website primarily focuses on the drawings I've been making over the past ten or so years.
+        I'm an artist based in London, UK. This website primarily focuses on the drawings I've been making over the past ten or so years.
         Whatever the subject, there's always a wider theme at the back of my mind: how do I, as someone compelled to make images with my hands,  
         deal with the status and prevalence of the modern digital image - pixelated, ghostly, disposable etc?<br/><br/>
-        
-        I've been a bookseller, a digital TV/web designer, a freelance writer/illustrator, a hospital radio DJ, an art instructor/graphic designer for 
-        <a href="https://arthouseunlimited.org/" class="button">ARTHOUSE Unlimited</a> and the cloakroom attendant at London's last-remaining leather bar. 
-        I currently organise and host a fortnightly, men-only <a href="https://instagram.com/lifedrawingatthebackstreet" class="button">life drawing session</a>
-        at a hair salon in Dalston, London.
+
+        <a href="mailto:matthew.pagett@gmail.com" class="button">matthew.pagett@gmail.com</a><br/>
+        <a href="https://instagram.com/lifedrawingatthebackstreet" class="button"><i class="fa">&#xf16d;</i> pagettmatthew</a>
+
         <br/><br/>
 
         <table>
@@ -201,6 +197,8 @@
 </template>
 
 <style>
+  @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+
   .about {
     padding: 6px;
     max-width: 812px/*calc(200% - 100vw + 36px)*/;
@@ -209,7 +207,6 @@
 
   a.button {
     color: black;
-    text-decoration: underline;
   }
   
   p {

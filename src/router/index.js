@@ -861,7 +861,7 @@ let routesArray = [
     name: "bodies",
     props: {
       imageSet: bodies,
-      accentColor: "var(--red)"
+      accentColor: "var(--black)"
     }
   },
   {
@@ -870,7 +870,7 @@ let routesArray = [
     name: "flowers",
     props: {
       imageSet: flowers,
-      accentColor: "var(--green)"
+      accentColor: "var(--black)"
     }
   },
   {
@@ -882,12 +882,12 @@ let routesArray = [
         "name": "Designs",
         "srcThumb": "/images/books.jpg",
         "srcFull": "/images/books.jpg",
-        "caption": "Examples of various design/illustration/writing projects. Includes:\n- flyers for the life drawing sessions I’ve organised and hosted since 2022;\n- my dissertation set in a fictional arts centre that specialises in unfinished artwork;\n- products I helped design and artwork during my eleven years working at ARTHOUSE Unlimited, a charity for adults with complex neurodiverse and physical support needs. I was also an art instructor there;\n- six books I wrote and illustrated;\n- 25+ books I illustrated;\n- a 60 page booklet I wrote and designed about terror;\n- a 120 page book I designed and edited as part of a project with University of Sussex exploring why people run marathons.",
+        "caption": "Examples of illustration/graphic design/writing projects",
         "series": "designs"
       },
       nextImage: undefined,
       previousImage: undefined,
-      accentColor: "var(--blue)"
+      accentColor: "var(--black)"
     }
   },
   {
@@ -914,7 +914,7 @@ bodies.forEach(function (image) {
       image: image,
       nextImage: next,
       previousImage: previous,
-      accentColor: "var(--red)"
+      accentColor: "var(--black)"
     }
   })
   previous = image;
@@ -933,7 +933,7 @@ flowers.forEach(function (image) {
       image: image,
       nextImage: next,
       previousImage: previous,
-      accentColor: "var(--green)"
+      accentColor: "var(--black)"
     }
   })
   previous = image;
