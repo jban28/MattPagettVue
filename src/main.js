@@ -2,9 +2,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router/index.js'
+import routerPromise from './router/index.js'
 import './assets/main.css'
 
-createApp(App)
-.use(router)
-.mount('#app')
+routerPromise.then(router => {
+  createApp(App)
+  .use(router)
+  .mount('#app')
+})
+
+

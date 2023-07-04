@@ -10,12 +10,5 @@
 </template>
 
 <style>
-  .center {
-    text-align: center;
-    height: auto;
-    padding: 12px;
-    width: auto;
-    margin: auto;
-    background-color: white;
-  }
+
 </style>
