@@ -27,7 +27,7 @@
     postData.append("caption", document.getElementById("caption").value)
     postData.append("series", document.getElementById("series").value)
     
-    fetch('http://artistapi-env.eba-ptdactte.us-east-1.elasticbeanstalk.com/image',
+    fetch('https://artistapi-env.eba-ptdactte.us-east-1.elasticbeanstalk.com/image',
       {
         method: 'POST',
         headers: {
@@ -35,9 +35,9 @@
         },
         body: postData
       })
-      .then(async http => {
-        let response = http.text();
-        if (http.ok) {
+      .then(async https => {
+        let response = https.text();
+        if (https.ok) {
           console.log("created")
         }
         else {
@@ -50,10 +50,10 @@
   }
 
   let getToken = function () {
-    fetch('http://artistapi-env.eba-ptdactte.us-east-1.elasticbeanstalk.com/login?username=' + username + '&' + 'password=' + password)
-    .then(async http => {
-      let content = http.text();
-      if (http.ok) {
+    fetch('https://artistapi-env.eba-ptdactte.us-east-1.elasticbeanstalk.com/login?username=' + username + '&' + 'password=' + password)
+    .then(async https => {
+      let content = https.text();
+      if (https.ok) {
         return content;
       }
       else {
@@ -71,10 +71,10 @@
     })
   }
 
-  fetch('http://artistapi-env.eba-ptdactte.us-east-1.elasticbeanstalk.com/all-images?artist=Matt_Pagett')
-    .then(async http => {
-      let content = http.json();
-      if (http.ok) {
+  fetch('https://artistapi-env.eba-ptdactte.us-east-1.elasticbeanstalk.com/all-images?artist=Matt_Pagett')
+    .then(async https => {
+      let content = https.json();
+      if (https.ok) {
         return content;
       }
       else {

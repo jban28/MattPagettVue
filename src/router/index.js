@@ -10,7 +10,7 @@ import Admin from '../views/admin.vue'
 const bodies = [];
 const flowers = [];
 
-export default fetch('http://artistapi-env.eba-ptdactte.us-east-1.elasticbeanstalk.com/all-images?artist=Matt_Pagett')
+export default fetch('https://artistapi-env.eba-ptdactte.us-east-1.elasticbeanstalk.com/all-images?artist=Matt_Pagett')
 .then(async http => {
   let content = http.json();
   if (http.ok) {
