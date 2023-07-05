@@ -27,7 +27,7 @@
     postData.append("caption", document.getElementById("caption").value)
     postData.append("series", document.getElementById("series").value)
     
-    fetch('https://artistapi-env.eba-ptdactte.us-east-1.elasticbeanstalk.com/image',
+    fetch('https://artist-api.bannisterwebservices.co.uk/image',
       {
         method: 'POST',
         headers: {
@@ -50,7 +50,7 @@
   }
 
   let getToken = function () {
-    fetch('https://artistapi-env.eba-ptdactte.us-east-1.elasticbeanstalk.com/login?username=' + username + '&' + 'password=' + password)
+    fetch('https://artist-api.bannisterwebservices.co.uk/login?username=' + username + '&' + 'password=' + password)
     .then(async https => {
       let content = https.text();
       if (https.ok) {
@@ -71,7 +71,7 @@
     })
   }
 
-  fetch('https://artistapi-env.eba-ptdactte.us-east-1.elasticbeanstalk.com/all-images?artist=Matt_Pagett')
+  fetch('https://artist-api.bannisterwebservices.co.uk/all-images?artist=Matt_Pagett')
     .then(async https => {
       let content = https.json();
       if (https.ok) {
