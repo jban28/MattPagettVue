@@ -119,6 +119,9 @@ export default fetch('https://artist-api.bannisterwebservices.co.uk/all-images?a
     previous = image;
   })
 
+  previous = undefined;
+  index = 0;
+  
   designs.forEach(function (image) {
     index += 1;
     next = designs[index];
