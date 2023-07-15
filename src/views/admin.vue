@@ -10,10 +10,11 @@
   let message = reactive({text: ""});
   let login = reactive({failed: false, complete: false, newImage: false});
   let seriesShown = ref("bodies");
-  let allImages = ref([]);
-  let shownImages = computed(() => {
-    return allImages.value.filter((image) => (image.series == seriesShown.value))
-  })
+  let allImages = reactive({
+    "bodies": [],
+    "flowers": [],
+    "designs": []
+  });
 
   let updateList = function () {
     seriesShown.value = document.getElementById("series-select").value;
@@ -84,8 +85,9 @@
     })
     .then(images => {
       for (let image of images){
-        allImages.value.push(image)
+        allImages[image.series].push(image)
       }
+      console.log(allImages)
     })
     .catch(error => {
       message.text = error;
@@ -107,24 +109,14 @@
         <select id="series-select" v-show="!login.newImage" @change="updateList">
           <option value="bodies">Bodies</option>
           <option value="flowers">Flowers</option>
+          <option value="designs">Designs</option>
         </select>
         <button @click="login.newImage=true" v-show="!login.newImage">New Image</button>
       </div>
 
-      <draggable v-model="shownImages" animation="300">
+      <draggable v-model="allImages[seriesShown]" item-key="id" animation="300">
         <template #item="{element: image}">
-          <div class="edit-box">
-            <img class="thumbnail" :src="image.srcThumb"/>
-            
-            <p>Name:</p>
-            <p v-show="!edit">{{ image.name }}</p>
-            <input class="text-field" v-show="edit" type="text" v-model="image.name"/>
-            <p>Caption:</p>
-            <p v-show="!edit">{{ image.caption }}</p>
-            <input class="text-field" v-show="edit" type="text" v-model="image.caption"/>
-            <button @click="edit=!edit" v-show="!edit">Edit</button>
-            <button @click="submit" v-show="edit">Submit</button>
-          </div>
+          <ImageEditor :image=image :token=token></ImageEditor>
         </template>
       </draggable>
       

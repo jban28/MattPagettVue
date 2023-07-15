@@ -70,6 +70,11 @@
     width: calc(100% - 12px);
     display: block;
     margin: auto;
+    cursor: grab;
+  }
+
+  .thumbnail:active {
+    cursor: grabbing;
   }
 
   .text-field {
