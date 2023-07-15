@@ -1,6 +1,7 @@
 <script setup>
   import Content from '../components/content.vue';
   import ImageEditor from '../components/image-editor.vue';
+  import draggable from 'vuedraggable';
   import { reactive, ref, computed } from 'vue';
 
   let username;
@@ -109,7 +110,24 @@
         </select>
         <button @click="login.newImage=true" v-show="!login.newImage">New Image</button>
       </div>
-      <ImageEditor v-show="!login.newImage" v-for='image in shownImages' :image="image" :token="token"/>
+
+      <draggable v-model="shownImages" animation="300">
+        <template #item="{element: image}">
+          <div class="edit-box">
+            <img class="thumbnail" :src="image.srcThumb"/>
+            
+            <p>Name:</p>
+            <p v-show="!edit">{{ image.name }}</p>
+            <input class="text-field" v-show="edit" type="text" v-model="image.name"/>
+            <p>Caption:</p>
+            <p v-show="!edit">{{ image.caption }}</p>
+            <input class="text-field" v-show="edit" type="text" v-model="image.caption"/>
+            <button @click="edit=!edit" v-show="!edit">Edit</button>
+            <button @click="submit" v-show="edit">Submit</button>
+          </div>
+        </template>
+      </draggable>
+      
 
       <div class="new-image" v-show="login.newImage">
         <label class="new-image" for="select-image">Select Image:</label>

@@ -9,6 +9,7 @@ import Admin from '../views/admin.vue'
 
 const bodies = [];
 const flowers = [];
+const designs = [];
 
 export default fetch('https://artist-api.bannisterwebservices.co.uk/all-images?artist=Matt_Pagett')
 .then(async http => {
@@ -27,6 +28,9 @@ export default fetch('https://artist-api.bannisterwebservices.co.uk/all-images?a
     }
     else if (image.series == "flowers"){
       flowers.push(image)
+    }
+    else if (image.series == "designs"){
+      designs.push(image)
     }
   }
 
@@ -59,18 +63,10 @@ export default fetch('https://artist-api.bannisterwebservices.co.uk/all-images?a
     },
     {
       path: "/designs",
-      component: Image,
+      component: Gallery,
+      name: "designs",
       props: {
-        image: {
-          "url": "/designs",
-          "name": "Designs",
-          "srcThumb": "/images/books.jpg",
-          "srcFull": "/images/books.jpg",
-          "caption": "Examples of illustration/graphic design/writing projects",
-          "series": "designs"
-        },
-        nextImage: undefined,
-        previousImage: undefined,
+        imageSet: designs,
         accentColor: "var(--black)"
       }
     },
@@ -110,6 +106,22 @@ export default fetch('https://artist-api.bannisterwebservices.co.uk/all-images?a
   flowers.forEach(function (image) {
     index += 1;
     next = flowers[index];
+    routesArray.push({
+      path: image.url,
+      component: Image,
+      props: {
+        image: image,
+        nextImage: next,
+        previousImage: previous,
+        accentColor: "var(--black)"
+      }
+    })
+    previous = image;
+  })
+
+  designs.forEach(function (image) {
+    index += 1;
+    next = designs[index];
     routesArray.push({
       path: image.url,
       component: Image,
