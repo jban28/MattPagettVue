@@ -13,7 +13,7 @@
   })
 
   let submit = function () {
-    fetch('http://localhost:5000/image/'+image.value._id, 
+    fetch('https://artist-api.bannisterwebservices.co.uk/image/'+image.value._id, 
     {
       method: 'PUT',
       headers: {

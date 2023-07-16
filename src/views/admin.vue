@@ -20,6 +20,41 @@
     seriesShown.value = document.getElementById("series-select").value;
   }
 
+  let reorder = function (series) {
+    let newList = [];
+    let changeList = allImages[series];
+    let index = changeList.length - 1;
+    for (let image of changeList) {
+      if (image.sequence != index) {
+        newList.push({_id: image._id, newSequence: {sequence: index}});
+        image.sequence = index;
+      }
+      index -= 1;
+    }
+    
+    fetch('https://artist-api.bannisterwebservices.co.uk/reorder', 
+    {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      },
+      body: JSON.stringify(newList)
+    })
+    .then(async http => {
+      let response = http.text();
+      if (http.ok) {
+        console.log("complete");
+      }
+      else {
+        return response.then(response => {throw new Error(response);})
+      }
+    })
+    .catch(error => {
+      message.text = error;
+    })
+  }
+
   let createImage = function () {
     
     let postData = new FormData();
@@ -114,7 +149,7 @@
         <button @click="login.newImage=true" v-show="!login.newImage">New Image</button>
       </div>
 
-      <draggable v-model="allImages[seriesShown]" item-key="id" animation="300">
+      <draggable v-model="allImages[seriesShown]" item-key="id" animation="300" @change="reorder(seriesShown)">
         <template #item="{element: image}">
           <ImageEditor :image=image :token=token></ImageEditor>
         </template>
