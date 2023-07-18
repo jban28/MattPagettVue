@@ -59,6 +59,14 @@
     height: 20px;
   }
 
+  .show .nav-item {
+    margin-top: 12px;
+  }
+
+  .collapsing .nav-item {
+    margin-top: 12px;
+  }
+
   .bold {
     font-weight: bold;
   }
