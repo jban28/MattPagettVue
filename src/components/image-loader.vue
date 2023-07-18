@@ -23,28 +23,19 @@
 
 <template>
   <div class="frame">
-    <FadeTransition><div v-show="!show.showing" class="loader"></div></FadeTransition>
+    <div v-show="!show.showing" class="loader"></div>
     <router-link :to="props.route"><FadeTransition><img v-show="show.showing" class="image" :src="src" @load="showImg()"/></FadeTransition></router-link>
   </div>
 </template>
 
 <style scoped>
   .frame {
-    width: 33.3333%;
     aspect-ratio: 1/1;
-    margin: 0px;
-    /*inline-block leaves space for descenders (e.g: letter y or g) so space between rows is wrong*/
-    display: inline-flex;
-    position: relative;
-    padding: 6px;
   }
 
   .image {
-    width: calc(100% - 12px);
-    height: calc(100% - 12px);
-    position: absolute;
+    width: 100%;
   }
-
   .loader {
     border: 4px solid var(--grey);
     border-top: 4px solid var(--darkGrey);
@@ -52,7 +43,7 @@
     width: 30px;
     height: 30px;
     animation: spin 5s linear infinite;
-    position: absolute;
+    position: relative;
     left: calc(50% - 15px);
     top: calc(50% - 15px);
   }

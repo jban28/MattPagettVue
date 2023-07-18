@@ -39,10 +39,13 @@
   <div class="new-image">
     <label class="new-image" for="select-image">Select Image:</label>
     <input id="select-image" name="image" type="file"/><br/>
+
     <label class="new-image" for="img-name">Name:</label>
     <input id="img-name" type="text"/><br/>
+
     <label class="new-image" for="caption">Caption:</label>
     <textarea id="caption" rows="5"></textarea><br/>
+
     <label class="new-image" for="series">Series:</label>
     <select id="series">
       <option value="bodies">Bodies</option>
@@ -53,3 +56,13 @@
     <button @click="router.push({path: '/admin/edit'})">Cancel</button>
   </div>
 </template>
+
+<style>
+  .new-image label {
+    width: 112px;
+  }
+
+  .new-image textarea {
+    width: calc(100% - 124px) 
+  }
+</style>

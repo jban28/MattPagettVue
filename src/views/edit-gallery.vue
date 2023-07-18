@@ -53,7 +53,7 @@
 </script>
 
 <template>
-  <div class="content">
+  <div>
     <select id="series-select" @change="updateList">
       <option value="bodies">Bodies</option>
       <option value="flowers">Flowers</option>
@@ -67,11 +67,3 @@
     </draggable>
   </div>
 </template>
-
-<style>
-  .grid-container {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr))
-  }
-</style>

@@ -216,86 +216,73 @@
 </script>
 
 <template>
-    <div class="content">
-      <div class="fill">
-        <div class="image-header">
-          <p class="caption">{{ image.caption }}</p>
-        </div>
-        <div id="controls">
-          <span class="material-icons button" v-if='previousImage!==undefined' @click='router.push(previousImage.url)'>chevron_left</span>
-          <span class="material-icons button" @click='router.push("./")'>expand_less</span>
-          <span class="material-icons button" v-if='nextImage!==undefined' @click='router.push(nextImage.url)'>chevron_right</span>
-          <span id="full-screen" class="material-icons button">fullscreen</span>
-          <span id="slider-box" class="material-icons button"><input type="range" min="0" max="1" value="0" step="0.01" id="slider" label="zoom"/></span>
-        </div>
-        <div id="external-frame" class="fill">
-          <div id="frame">
-            <FadeTransition appear><div v-show="!show.showing" class="loader"></div></FadeTransition>
-            <FadeTransition><img v-show="show.showing" @load="showImg()" id= "image" :src="src"/></FadeTransition>
-            
-          </div>
-        </div>   
-      </div>
+
+  <div class="content fill">
+    <div>{{ image.caption }}</div>
+    <div id="controls">
+      <span class="material-icons" v-if='previousImage!==undefined' @click='router.push(previousImage.url)'>chevron_left</span>
+      <span class="material-icons" @click='router.push("./")'>expand_less</span>
+      <span class="material-icons" v-if='nextImage!==undefined' @click='router.push(nextImage.url)'>chevron_right</span>
+      <span id="full-screen" class="material-icons">fullscreen</span>
+      <span id="slider-box" class="material-icons"><input type="range" min="0" max="1" value="0" step="0.01" id="slider" label="zoom"/></span>
     </div>
+      <div id="frame">
+        <FadeTransition appear><div v-show="!show.showing" class="loader"></div></FadeTransition>
+        <FadeTransition><img v-show="show.showing" @load="showImg()" id= "image" :src="src"/></FadeTransition>
+      </div>
+  </div>
+
 </template>
 
 <style scoped>
   @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-  #image {
-    cursor: zoom-in;
-  }
 
-  .image-header {
-    max-width: 1000px;
-    width: 100%;
-    padding: 6px;
-    margin: auto;
-    position: relative;
-    vertical-align: top;
-  }
-
-  .caption {
-    display: inline-block;
-    margin-bottom: 0px;
-  }
-
-  .material-icons { 
-    display: inline-block;
-    position: relative;
-    top: 6px;
-    color: v-bind('accentColor')
-  }
-
-  #image {
-    cursor: zoom-in;
+  .fill {
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
   }
 
   #external-frame{
     height: 100%;
     max-height: 100%;
-    padding: 6px;
     overflow: hidden;
-    z-index: 0;
-  }
-
-  .fill {
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 76px);
   }
 
   #frame {
     height: 100%;
+    max-height: 100%;
     text-align: center;
     overflow: hidden;
   }
 
-  #controls {
+  #image {
+    cursor: zoom-in;
+  }
+
+  .material-icons {
     cursor: pointer;
-    padding: 0px 6px;
-    overflow: visible;
-    color: v-bind('accentColor');
-    height: 36px;
+  }
+
+  .material-icons:hover {
+    color: var(--darkGrey)
+  }
+  
+  .loader {
+    border: 8px solid var(--grey);
+    border-top: 8px solid var(--darkGrey);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 5s linear infinite;
+    position: absolute;
+    left: calc(50% - 30px);
+    top: calc(50% + 30px);
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 
   #slider-box {
@@ -316,21 +303,17 @@
     margin: auto;
     width: 200px;
     cursor: pointer;
-    border-radius: 0; /* iOS */
+    border-radius: 0; /*ios*/
   }
 
   ::-webkit-slider-runnable-track {
     background: var(--grey);
   }
 
-  /*
-  * 1. Set to 0 width and remove border for a slider without a thumb
-  * 2. Shadow is negative the full width of the input and has a spread 
-  *    of the width of the input.
-  */
+
   ::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 16px; /* 1 */
+    width: 16px; 
     height: 16px;
     background: var(--grey);
     box-shadow: -200px 0 0 200px v-bind('accentColor');
@@ -381,22 +364,5 @@
 
   ::-ms-tooltip { 
     display: none;
-  }
-
-  .loader {
-    border: 8px solid var(--grey);
-    border-top: 8px solid var(--darkGrey);
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 5s linear infinite;
-    position: absolute;
-    left: calc(50% - 30px);
-    top: calc(50% + 30px);
-  }
-
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
   }
 </style>

@@ -1,66 +1,48 @@
 :root {
   --white: #ffffff;
-  --red: #993333;
-  --green: #336633;
-  --blue: #333366;
   --black: #000000;
   --grey: #c2c2c2;
   --darkGrey: #595959;
 }
 
-.red {
-  color: var(--red);
-}
-
-.green {
-  color: var(--green)
-}
-
-.blue {
-  color: var(--blue);
-}
-
-.black {
-  color: var(--black);
-}
-
 body {
-  font-family:'Times New Roman', Times, serif;
-  align-items: center;
   background-image: url("/images/index.jpg");
   background-attachment: fixed;
-  min-height: 100%; 
-  background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  font-family:'Times New Roman', Times, serif;
   overflow-y: scroll;
-}
-
-.button:hover {
-  color: var(--darkGrey);
 }
 
 a {
   text-decoration: none;
+  color: var(--black);
 }
 
-.center {
-  text-align: center;
-  height: auto;
-  padding: 12px;
-  width: auto;
-  margin: auto;
-  background-color: white;
+a:hover {
+  color: var(--darkGrey);
 }
 
 .content {
-  max-width: 1000px;
   width: 100%;
+  max-width: 1000px;
   margin: auto;
-  padding: 0px 6px 6px;
+  background-color: var(--white);
+  padding: 12px;
   border-width: 0px 12px;
   border-style: solid;
   border-color: #00000000;
   background-clip: padding-box;
-  background-color: var(--white);
+}
+
+.center {
+  text-align: center;
+  width: 100%;
+  background-color: white;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }

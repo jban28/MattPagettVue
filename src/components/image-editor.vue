@@ -46,18 +46,22 @@
 <template>
   <div class="edit-box">
     <img class="thumbnail" :src="image.srcThumb"/>
-    <p>Name:</p>
+
+    <label :for="image._id + '_name'">Name:</label>
     <p v-show="!edit">{{ image.name }}</p>
     <input class="text-field" v-show="edit" type="text" v-model="image.name" :id="image._id + '_name'"/>
-    <p>Caption:</p>
+
+    <label :for="image._id + '_caption'">Caption:</label>
     <p v-show="!edit">{{ image.caption }}</p>
     <input class="text-field" v-show="edit" type="text" v-model="image.caption" :id="image._id + '_caption'"/>
+
     <button @click="edit=!edit" v-show="!edit">Edit</button>
     <button @click="submit" v-show="edit">Submit</button>
   </div>
 </template>
 
 <style>
+
   .thumbnail {
     width: 100%;
     cursor: grab;
@@ -67,13 +71,8 @@
     cursor: grabbing;
   }
 
-  .edit-box {
-    margin: 12px;
-    text-align: left;
-    height: 100%;
-  }
-
   .text-field {
     width: 100%;
+    margin-bottom: 12px;
   }
 </style>

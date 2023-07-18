@@ -2,14 +2,14 @@
   <div class="content">  
     <div class="about">
       <p>
-      I'm an artist based in London, UK. This website primarily focuses on the drawings I've been making over the past ten or so years.
-      Whatever the subject, there's always a wider theme at the back of my mind: how do I, as someone compelled to make images with my hands,  
-      deal with the status and prevalence of the modern digital image - pixelated, ghostly, disposable etc?<br/><br/>
-
-      <a href="mailto:matthew.pagett@gmail.com" class="button">matthew.pagett@gmail.com</a><br/>
-      <a href="https://www.instagram.com/pagettmatthew/" class="button"><i class="fa">&#xf16d;</i> pagettmatthew</a>
-
-      <br/><br/>
+        I'm an artist based in London, UK. This website primarily focuses on the drawings I've been making over the past ten or so years.
+        Whatever the subject, there's always a wider theme at the back of my mind: how do I, as someone compelled to make images with my hands,  
+        deal with the status and prevalence of the modern digital image - pixelated, ghostly, disposable etc?
+      </p>
+      <p>
+        <a href="mailto:matthew.pagett@gmail.com">matthew.pagett@gmail.com</a><br/>
+        <a href="https://www.instagram.com/pagettmatthew/"><i class="fa">&#xf16d;</i> pagettmatthew</a>
+      </p>
 
       <table>
         <tr>
@@ -184,7 +184,6 @@
       </table>
       <br/>
       <em>This website was created by James Bannister, who can be contacted by emailing <a href="mailto:jd.bannister28@gmail.com" class="button">jd.bannister28@gmail.com</a>.</em>
-      </p>
     </div>
   </div> 
 
@@ -194,16 +193,7 @@
   @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
 
   .about {
-    padding: 6px;
-    max-width: 812px/*calc(200% - 100vw + 36px)*/;
+    max-width: 812px;
     margin: 0px auto;
-  }
-
-  a.button {
-    color: black;
-  }
-  
-  p {
-    margin: 0px;
   }
 </style>
