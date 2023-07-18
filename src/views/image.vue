@@ -1,6 +1,5 @@
 <script setup>
   import FadeTransition from '../transitions/fade-transition.vue';
-  import Content from '../components/content.vue';
   import { onMounted } from 'vue';
   import { useRouter } from 'vue-router';
   import { ref, reactive, watch } from 'vue';
@@ -217,7 +216,7 @@
 </script>
 
 <template>
-    <Content>
+    <div class="content">
       <div class="fill">
         <div class="image-header">
           <p class="caption">{{ image.caption }}</p>
@@ -237,7 +236,7 @@
           </div>
         </div>   
       </div>
-    </Content>
+    </div>
 </template>
 
 <style scoped>

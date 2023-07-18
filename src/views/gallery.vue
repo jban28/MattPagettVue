@@ -1,6 +1,5 @@
 <script setup>
   import ImageLoader from "../components/image-loader.vue";
-  import Content from '../components/content.vue';
 
   const props = defineProps({
     imageSet: Array,
@@ -8,9 +7,9 @@
 </script>
 
 <template>
-  <Content>
+  <div class="content">
     <ImageLoader v-for='image in imageSet' :route='image.url' :img-url='image.srcThumb'/>
-  </Content>
+  </div>
 </template>
 
 <style scoped>

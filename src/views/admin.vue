@@ -1,9 +1,5 @@
-<script setup>
-  import Content from "../components/content.vue";
-</script>
-
 <template>
-  <Content>
+  <div class="content">
     <nav>
       <ul>
         <li>
@@ -15,7 +11,7 @@
       </ul>
     </nav>
     <router-view></router-view>
-  </Content>
+  </div>
 </template>
 
 <style>

@@ -52,3 +52,15 @@ a {
   margin: auto;
   background-color: white;
 }
+
+.content {
+  max-width: 1000px;
+  width: 100%;
+  margin: auto;
+  padding: 0px 6px 6px;
+  border-width: 0px 12px;
+  border-style: solid;
+  border-color: #00000000;
+  background-clip: padding-box;
+  background-color: var(--white);
+}

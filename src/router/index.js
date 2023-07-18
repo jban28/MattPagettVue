@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, onBeforeRouteLeave} from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import Homepage from '../views/homepage.vue'
 import About from '../views/about.vue'
 import Gallery from '../views/gallery.vue'

@@ -1,6 +1,5 @@
 <script setup>
   import ImageEditor from '../components/image-editor.vue';
-  import Content from '../components/content.vue';
   import draggable from 'vuedraggable';
   import { ref, reactive } from 'vue';
   import { auth } from '../scripts/token';
@@ -54,7 +53,7 @@
 </script>
 
 <template>
-  <Content>
+  <div class="content">
     <select id="series-select" @change="updateList">
       <option value="bodies">Bodies</option>
       <option value="flowers">Flowers</option>
@@ -66,7 +65,7 @@
         <ImageEditor :image=image></ImageEditor>
       </template>
     </draggable>
-  </Content>
+  </div>
 </template>
 
 <style>

@@ -7,10 +7,6 @@
     route: String
   })
 
-  let getURL = function () {
-    return new URL(props.imgUrl, import.meta.url);
-  }
-
   let show = reactive({showing: false});
   let showImg = function () {
     show.showing = true;
