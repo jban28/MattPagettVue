@@ -4,14 +4,32 @@ import About from '../views/about.vue'
 import Gallery from '../views/gallery.vue'
 import Image from '../views/image.vue'
 import NotFound from '../views/not-found.vue'
+import Login from '../views/login.vue'
 import Admin from '../views/admin.vue'
+import EditGallery from '../views/edit-gallery.vue'
+import NewImage from '../views/new-image.vue'
 
+let routesArray = [
+  {
+    path: "/", 
+    component: Homepage
+  },
+  {
+    path: "/about",
+    component: About
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    component: NotFound
+  },
+  {
+    path: "/login",
+    component: Login,
+    name: "login"
+  },
+];
 
-const bodies = [];
-const flowers = [];
-const designs = [];
-
-export default fetch('https://artist-api.bannisterwebservices.co.uk/all-images?artist=Matt_Pagett')
+export default fetch('https://artist-api.bannisterwebservices.co.uk/all-images-by-series?artist=Matt_Pagett')
 .then(async http => {
   let content = http.json();
   if (http.ok) {
@@ -22,123 +40,65 @@ export default fetch('https://artist-api.bannisterwebservices.co.uk/all-images?a
   }
 })
 .then(images => {
-  for (let image of images){
-    if (image.series == "bodies"){
-      bodies.push(image)
-    }
-    else if (image.series == "flowers"){
-      flowers.push(image)
-    }
-    else if (image.series == "designs"){
-      designs.push(image)
-    }
-  }
+  routesArray.push({
+    path: "/admin",
+    component: Admin,
+    beforeEnter: (to, from) => {
+      if (from.name === "login"){return true}
+      else {return {name: "login"}}
+    },
+    children: [
+      {
+        path: "edit",
+        component: EditGallery,
+        props: {
+          allImages: images
+        }
+      },
+      {
+        path: "new",
+        component: NewImage
+      }
+    ]
+  })
 
   let previous = undefined;
   let next = undefined;
   let index = 0;
 
-  let routesArray = [
-    {
-      path: "/", 
-      component: Homepage
-    },
-    {
-      path: "/bodies",
-      component: Gallery,
-      name: "bodies",
-      props: {
-        imageSet: bodies,
-        accentColor: "var(--black)"
-      }
-    },
-    {
-      path: "/flowers",
-      component: Gallery,
-      name: "flowers",
-      props: {
-        imageSet: flowers,
-        accentColor: "var(--black)"
-      }
-    },
-    {
-      path: "/designs",
-      component: Gallery,
-      name: "designs",
-      props: {
-        imageSet: designs,
-        accentColor: "var(--black)"
-      }
-    },
-    {
-      path: "/about",
-      component: About
-    },
-    {
-      path: "/:pathMatch(.*)*",
-      component: NotFound
-    },
-    {
-      path: "/admin",
-      component: Admin
-    }
-  ]
-
-  bodies.forEach(function (image) {
-    index += 1;
-    next = bodies[index];
+  for (const [seriesName, seriesData] of Object.entries(images)){
+    
+    // Create routes for gallery pages for each series
     routesArray.push({
-      path: image.url,
-      component: Image,
+      path: `/${seriesName}`,
+      component: Gallery,
+      name: `${seriesName}`,
       props: {
-        image: image,
-        nextImage: next,
-        previousImage: previous,
+        imageSet: seriesData,
         accentColor: "var(--black)"
       }
     })
-    previous = image;
-  })
 
-  previous = undefined;
-  index = 0;
-
-  flowers.forEach(function (image) {
-    index += 1;
-    next = flowers[index];
-    routesArray.push({
-      path: image.url,
-      component: Image,
-      props: {
-        image: image,
-        nextImage: next,
-        previousImage: previous,
-        accentColor: "var(--black)"
-      }
+    // Create routes for each individual image
+    seriesData.forEach(function (image) {
+      index += 1;
+      next = images.bodies[index];
+      routesArray.push({
+        path: image.url,
+        component: Image,
+        props: {
+          image: image,
+          nextImage: next,
+          previousImage: previous,
+          accentColor: "var(--black)"
+        }
+      })
+      previous = image;
     })
-    previous = image;
-  })
-
-  previous = undefined;
-  index = 0;
   
-  designs.forEach(function (image) {
-    index += 1;
-    next = designs[index];
-    routesArray.push({
-      path: image.url,
-      component: Image,
-      props: {
-        image: image,
-        nextImage: next,
-        previousImage: previous,
-        accentColor: "var(--black)"
-      }
-    })
-    previous = image;
-  })
-
-  
+    previous = undefined;
+    index = 0;
+  } 
 
   const router = createRouter({
     history: createWebHistory(),

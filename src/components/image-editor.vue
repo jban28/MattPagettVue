@@ -1,12 +1,14 @@
 <script setup>
   import { ref, watch } from 'vue';
+  import { auth } from '../scripts/token';
+
   const props = defineProps({
-    image: Object,
-    token: String
+    image: Object
   })
 
   let edit = ref(false)
   let image = ref(props.image);
+
   watch(() => props.image, 
   ()=>{
     image.value = props.image;
@@ -18,7 +20,7 @@
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': props.token
+        'Authorization': auth.token
       },
       body: JSON.stringify({ 
         name: image.value.name, 
@@ -44,37 +46,31 @@
 <template>
   <div class="edit-box">
     <img class="thumbnail" :src="image.srcThumb"/>
-    
     <p>Name:</p>
     <p v-show="!edit">{{ image.name }}</p>
-    <input class="text-field" v-show="edit" type="text" v-model="image.name"/>
+    <input class="text-field" v-show="edit" type="text" v-model="image.name" :id="image._id + '_name'"/>
     <p>Caption:</p>
     <p v-show="!edit">{{ image.caption }}</p>
-    <input class="text-field" v-show="edit" type="text" v-model="image.caption"/>
+    <input class="text-field" v-show="edit" type="text" v-model="image.caption" :id="image._id + '_caption'"/>
     <button @click="edit=!edit" v-show="!edit">Edit</button>
     <button @click="submit" v-show="edit">Submit</button>
   </div>
 </template>
 
 <style>
-  .edit-box {
-    width: 33.333333%;
-    margin: 0px;
-    padding: 6px;
-    text-align: left;
-    display: inline-block;
-    text-align: left;
-  }
-
   .thumbnail {
-    width: calc(100% - 12px);
-    display: block;
-    margin: auto;
+    width: 100%;
     cursor: grab;
   }
 
   .thumbnail:active {
     cursor: grabbing;
+  }
+
+  .edit-box {
+    margin: 12px;
+    text-align: left;
+    height: 100%;
   }
 
   .text-field {

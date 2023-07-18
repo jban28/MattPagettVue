@@ -1,184 +1,25 @@
 <script setup>
-  import Content from '../components/content.vue';
-  import ImageEditor from '../components/image-editor.vue';
-  import draggable from 'vuedraggable';
-  import { reactive, ref, computed } from 'vue';
-
-  let username;
-  let password;
-  let token;
-  let message = reactive({text: ""});
-  let login = reactive({failed: false, complete: false, newImage: false});
-  let seriesShown = ref("bodies");
-  let allImages = reactive({
-    "bodies": [],
-    "flowers": [],
-    "designs": []
-  });
-
-  let updateList = function () {
-    seriesShown.value = document.getElementById("series-select").value;
-  }
-
-  let reorder = function (series) {
-    let newList = [];
-    let changeList = allImages[series];
-    let index = changeList.length - 1;
-    for (let image of changeList) {
-      if (image.sequence != index) {
-        newList.push({_id: image._id, newSequence: {sequence: index}});
-        image.sequence = index;
-      }
-      index -= 1;
-    }
-    
-    fetch('https://artist-api.bannisterwebservices.co.uk/reorder', 
-    {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token
-      },
-      body: JSON.stringify(newList)
-    })
-    .then(async http => {
-      let response = http.text();
-      if (http.ok) {
-        console.log("complete");
-      }
-      else {
-        return response.then(response => {throw new Error(response);})
-      }
-    })
-    .catch(error => {
-      message.text = error;
-    })
-  }
-
-  let createImage = function () {
-    
-    let postData = new FormData();
-
-    postData.append("file", document.getElementById("select-image").files[0]);
-    postData.append("name", document.getElementById("img-name").value)
-    postData.append("caption", document.getElementById("caption").value)
-    postData.append("series", document.getElementById("series").value)
-    
-    fetch('https://artist-api.bannisterwebservices.co.uk/image',
-      {
-        method: 'POST',
-        headers: {
-          'Authorization': token
-        },
-        body: postData
-      })
-      .then(async https => {
-        let response = https.text();
-        if (https.ok) {
-          console.log("created")
-        }
-        else {
-          return response.then(response => {throw new Error(response);})
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      })
-  }
-
-  let getToken = function () {
-    fetch('https://artist-api.bannisterwebservices.co.uk/login?username=' + username + '&' + 'password=' + password)
-    .then(async https => {
-      let content = https.text();
-      if (https.ok) {
-        return content;
-      }
-      else {
-        return content.then(content => {throw new Error(content);})
-      }
-    })
-    .then(jwt => {
-      login.failed = false;
-      login.complete = true;
-      token = jwt;
-    })
-    .catch(error => {
-      login.failed = true;
-      message.text = error.message;
-    })
-  }
-
-  fetch('https://artist-api.bannisterwebservices.co.uk/all-images?artist=Matt_Pagett')
-    .then(async https => {
-      let content = https.json();
-      if (https.ok) {
-        return content;
-      }
-      else {
-        return content.then(content => {throw new Error(content);})
-      }
-    })
-    .then(images => {
-      for (let image of images){
-        allImages[image.series].push(image)
-      }
-      console.log(allImages)
-    })
-    .catch(error => {
-      message.text = error;
-    })
+  import Content from "../components/content.vue";
 </script>
 
 <template>
-  <div>
-    <div id="login-box" class="center" v-show="!login.complete">
-      <h1>Admin login</h1>
-      <input id="username" class="form" type="text" placeholder="Username" v-model="username"><br/>
-      <input id="password" class="form" type="password" placeholder="Password" v-model="password"><br/>
-      <button class="form" @click="getToken">Login</button>
-      <div class="form error" v-show="login.failed==true">{{ message.text }}</div>
-    </div>
-
-    <Content v-show="login.complete">
-      <div class="options-bar">
-        <select id="series-select" v-show="!login.newImage" @change="updateList">
-          <option value="bodies">Bodies</option>
-          <option value="flowers">Flowers</option>
-          <option value="designs">Designs</option>
-        </select>
-        <button @click="login.newImage=true" v-show="!login.newImage">New Image</button>
-      </div>
-
-      <draggable v-model="allImages[seriesShown]" item-key="id" animation="300" @change="reorder(seriesShown)">
-        <template #item="{element: image}">
-          <ImageEditor :image=image :token=token></ImageEditor>
-        </template>
-      </draggable>
-      
-
-      <div class="new-image" v-show="login.newImage">
-        <label class="new-image" for="select-image">Select Image:</label>
-        <input id="select-image" name="image" type="file"/><br/>
-        <label class="new-image" for="img-name">Name:</label>
-        <input id="img-name" type="text"/><br/>
-        <label class="new-image" for="caption">Caption:</label>
-        <textarea id="caption" rows="5"></textarea><br/>
-        <label class="new-image" for="series">Series:</label>
-        <select id="series">
-          <option value="bodies">Bodies</option>
-          <option value="flowers">Flowers</option>
-        </select><br/>
-        
-        <button style="margin-left: 112px" @click="createImage">Submit</button>
-        <button @click="login.newImage=false">Cancel</button>
-      </div>
-    </Content>
-
-    
-  </div>
+  <Content>
+    <nav>
+      <ul>
+        <li>
+          <router-link to="/admin/edit">Edit Images</router-link>
+        </li>
+        <li>
+          <router-link to="/admin/new">Add Image</router-link>
+        </li>
+      </ul>
+    </nav>
+    <router-view></router-view>
+  </Content>
 </template>
 
 <style>
+
   #login-box {
     margin: 12px auto;
     padding: 6px;
