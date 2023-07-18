@@ -196,4 +196,8 @@
     max-width: 812px;
     margin: 0px auto;
   }
+
+  td {
+    vertical-align: top;
+  }
 </style>
