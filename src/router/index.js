@@ -82,7 +82,7 @@ export default fetch('https://artist-api.bannisterwebservices.co.uk/all-images-b
     // Create routes for each individual image
     seriesData.forEach(function (image) {
       index += 1;
-      next = images.bodies[index];
+      next = seriesData[index];
       routesArray.push({
         path: image.url,
         component: Image,
