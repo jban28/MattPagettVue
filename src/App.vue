@@ -1,13 +1,15 @@
 <script setup>
   import Navbar from './components/navbar.vue';
-  import FadeTransition from './transitions/fade-transition.vue';
+  import './transitions/fade-transition.vue';
+  import './transitions/slide-left.vue';
+  import './transitions/slide-right.vue';
 </script>
 
 <template>
   <Navbar/>
   <router-view v-slot="{ Component, route }">
-    <FadeTransition :mode="route.meta.transitionMode">
+    <transition :name="route.meta.transitionName" :mode="route.meta.transitionMode">
       <component :is="Component" :key="route.fullPath"/>
-    </FadeTransition>
+    </transition>
   </router-view>
 </template>
