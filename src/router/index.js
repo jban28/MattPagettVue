@@ -119,8 +119,8 @@ export default fetch('https://artist-api.bannisterwebservices.co.uk/all-images-b
     else {
       to.meta.transitionMode = "out-in"
     }
-    
   })
+  
   return router
 })
 .catch(error => {
