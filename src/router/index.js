@@ -119,9 +119,6 @@ export default fetch('https://artist-api.bannisterwebservices.co.uk/all-images-b
     else {
       to.meta.transitionMode = "out-in"
     }
-    if (to.meta.imgIndex > from.meta.imgIndex){to.meta.transitionName = "slide-left"}
-    else if (to.meta.imgIndex < from.meta.imgIndex){to.meta.transitionName = "slide-right"}
-    else {to.meta.transitionName = "fade"}
     
   })
   return router
