@@ -57,7 +57,10 @@ export default fetch('https://artist-api.bannisterwebservices.co.uk/all-images-b
       },
       {
         path: "new",
-        component: NewImage
+        component: NewImage,
+        props: {
+          allImages: images
+        }
       }
     ]
   })

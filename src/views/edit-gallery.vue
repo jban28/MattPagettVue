@@ -62,7 +62,7 @@
 
     <draggable class="grid-container" v-model="allImages[seriesShown]" item-key="id" animation="300" @change="reorder(seriesShown)">
       <template #item="{element: image}">
-        <ImageEditor :image=image></ImageEditor>
+        <ImageEditor :image=image :allImages=allImages></ImageEditor>
       </template>
     </draggable>
   </div>

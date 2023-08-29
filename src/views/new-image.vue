@@ -3,6 +3,10 @@
   import { useRouter } from 'vue-router';
   import {ref} from 'vue';
 
+  const props = defineProps({
+    allImages: Object
+  })
+
   let router = useRouter();
   let autoThumb = ref(true);
 
@@ -18,8 +22,7 @@
       postData.append("thumb", document.getElementById("select-thumb").files[0]);
     }
     
-    //fetch('https://artist-api.bannisterwebservices.co.uk/image',
-    fetch('http://localhost:5000/image',
+    fetch('https://artist-api.bannisterwebservices.co.uk/image',
       {
         method: 'POST',
         headers: {
@@ -27,14 +30,19 @@
         },
         body: postData
       })
-      .then(async https => {
-        let response = https.text();
-        if (https.ok) {
-          router.push({path: "admin/edit"})
+      .then(async http => {
+        let content = http.json();
+        if (http.ok) {
+          return content;
         }
         else {
-          return response.then(response => {throw new Error(response);})
+          return content.then(content => {throw new Error(content);})
         }
+      })
+      .then(newImage =>{
+        console.log(newImage);
+        props.allImages[newImage.series].unshift(newImage);
+        router.push({path: "/admin/edit"})
       })
       .catch(error => {
         console.log(error);
@@ -63,6 +71,7 @@
     <select id="series">
       <option value="bodies">Bodies</option>
       <option value="flowers">Flowers</option>
+      <option value="designs">Designs</option>
     </select><br/>
     
     <button style="margin-left: 112px" @click="createImage">Submit</button>
