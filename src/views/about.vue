@@ -183,7 +183,7 @@
         </tr>
       </table>
       <br/>
-      <em>This website was created by James Bannister, who can be contacted by emailing <a href="mailto:jd.bannister28@gmail.com" class="button">jd.bannister28@gmail.com</a>.</em>
+      <em>This website was created by James Bannister. Visit <a href="https://www.bannisterwebservices.co.uk" class="button">www.bannisterwebservices.co.uk</a> to find out more.</em>
     </div>
   </div> 
 
