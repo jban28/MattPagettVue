@@ -54,11 +54,18 @@
 
 <template>
   <div>
-    <select id="series-select" @change="updateList">
-      <option value="bodies">Bodies</option>
-      <option value="flowers">Flowers</option>
-      <option value="designs">Designs</option>
-    </select>
+    <div class="center">
+      <div class="w-50">
+        <button><router-link to="/admin/new">Add Image</router-link></button>
+      </div>
+      <div class="w-50">
+        <select id="series-select" @change="updateList">
+          <option value="bodies">Bodies</option>
+          <option value="flowers">Flowers</option>
+          <option value="designs">Designs</option>
+        </select>
+      </div>
+    </div>
 
     <draggable class="grid-container" v-model="allImages[seriesShown]" item-key="id" animation="300" @change="reorder(seriesShown)">
       <template #item="{element: image}">
@@ -67,3 +74,10 @@
     </draggable>
   </div>
 </template>
+
+<style>
+  .w-50 {
+    width:50%;
+    display: inline-block;
+  }
+</style>

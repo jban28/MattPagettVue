@@ -75,7 +75,7 @@
     </select><br/>
     
     <button style="margin-left: 112px" @click="createImage">Submit</button>
-    <button @click="router.push({path: '/edit'})">Cancel</button>
+    <button @click="router.push({path: '/admin/edit'})">Cancel</button>
   </div>
 </template>
 
