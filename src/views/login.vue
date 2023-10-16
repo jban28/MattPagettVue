@@ -11,7 +11,7 @@
   let message = reactive({text: ""});
 
   let getToken = function () {
-    fetch('https://artist-api.bannisterwebservices.co.uk/login',
+    fetch('https://artistapi.bannisterwebservices.co.uk/login',
     {
       method: 'POST',
       headers: {

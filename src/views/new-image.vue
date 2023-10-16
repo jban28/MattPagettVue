@@ -22,7 +22,7 @@
       postData.append("thumb", document.getElementById("select-thumb").files[0]);
     }
     
-    fetch('https://artist-api.bannisterwebservices.co.uk/image',
+    fetch('https://artistapi.bannisterwebservices.co.uk/image',
       {
         method: 'POST',
         headers: {

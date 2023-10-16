@@ -29,7 +29,7 @@ let routesArray = [
   },
 ];
 
-export default fetch('https://artist-api.bannisterwebservices.co.uk/all-images-by-series?artist=Matt_Pagett')
+export default fetch('https://artistapi.bannisterwebservices.co.uk/all-images-by-series?artist=Matt_Pagett')
 .then(async http => {
   let content = http.json();
   if (http.ok) {

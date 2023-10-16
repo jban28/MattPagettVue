@@ -28,7 +28,7 @@
       index -= 1;
     }
     
-    fetch('https://artist-api.bannisterwebservices.co.uk/reorder', 
+    fetch('https://artistapi.bannisterwebservices.co.uk/reorder', 
     {
       method: 'PUT',
       headers: {
