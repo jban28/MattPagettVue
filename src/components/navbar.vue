@@ -22,6 +22,9 @@
               <router-link to="/flowers"><span>Flowers</span></router-link>
             </li>
             <li class="nav-item" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">
+              <router-link to="/plates"><span>Plates</span></router-link>
+            </li>
+            <li class="nav-item" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">
               <router-link to="/designs"><span>Design etc.</span></router-link>
             </li>
             <li class="nav-item" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">
