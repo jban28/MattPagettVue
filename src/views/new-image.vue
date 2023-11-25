@@ -72,6 +72,7 @@
       <option value="bodies">Bodies</option>
       <option value="flowers">Flowers</option>
       <option value="designs">Designs</option>
+      <option value="plates">Plates</option>
     </select><br/>
     
     <button style="margin-left: 112px" @click="createImage">Submit</button>
