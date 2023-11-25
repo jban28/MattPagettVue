@@ -63,6 +63,7 @@
           <option value="bodies">Bodies</option>
           <option value="flowers">Flowers</option>
           <option value="designs">Designs</option>
+          <option value="plates">Plates</option>
         </select>
       </div>
     </div>
