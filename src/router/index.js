@@ -1489,8 +1489,10 @@ const images = {
       to.meta.transitionMode = "out-in"
     }
   })
+
+  export default router
   
-  return router
+//  return router
 //})
 // .catch(error => {
 //   console.log(error)
