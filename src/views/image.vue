@@ -1,223 +1,248 @@
 <script setup>
-  import FadeTransition from '../transitions/fade-transition.vue';
-  import { onMounted } from 'vue';
-  import { useRouter } from 'vue-router';
-  import { ref, reactive, watch } from 'vue';
+  // import FadeTransition from '../transitions/fade-transition.vue';
+  // import { onMounted } from 'vue';
+  // import { useRouter } from 'vue-router';
+  // import { ref, reactive, watch } from 'vue';
+  import ZoomSlider from '../components/zoom-slider.vue';
+  import GalleryButton from '../components/gallery-button.vue';
+  import ImageFrame from '../components/image-frame.vue';
+  import { ref } from 'vue';
 
-  const router = useRouter();
+  const scale = ref(1);
+  const minScale = ref(0);
 
-  const props = defineProps({
-    image: Object,
-    nextImage: Object,
-    previousImage: Object,
-    accentColor: String
-  })
+  // const router = useRouter();
 
-  let show = reactive({showing: false});
+  // const props = defineProps({
+  //   image: Object,
+  //   nextImage: Object,
+  //   previousImage: Object,
+  //   accentColor: String
+  // })
 
-  let showImg = function () {
-    show.showing = true;
-  }
+  // let show = reactive({showing: false});
 
-  const src = ref()
-  watch(
-    () => props.image.url,
-    () => {
-    src.value = new URL(props.image.srcFull, import.meta.url)
-    show.showing = false
-  }, {immediate: true})
+  // let showImg = function () {
+  //   show.showing = true;
+  // }
 
-  onMounted(() => {
-    const image = document.querySelector("#image");
-    const frame = document.querySelector('#frame');
-    const slider = document.querySelector("#slider");
-    const fullScreenBtn = document.querySelector("#full-screen");
+  // const src = ref()
+  // watch(
+  //   () => props.image.url,
+  //   () => {
+  //   src.value = new URL(props.image.srcFull, import.meta.url)
+  //   show.showing = false
+  // }, {immediate: true})
 
-    let zoomValue;
-    let isMouseDown = false;
-    let isTouch = false;
-    let touchSeparation;
-    let mousedownX;
-    let mousedownY;
-    let mouseX;
-    let mouseY;
-    let touchX;
-    let touchY;
-    let scrollAmountX;
-    let scrollAmountY;
-    frame.scrollBy({behavior: 'smooth'});
+  // onMounted(() => {
+  //   const image = document.querySelector("#image");
+  //   const frame = document.querySelector('#frame');
+  //   const slider = document.querySelector("#slider");
+  //   const fullScreenBtn = document.querySelector("#full-screen");
 
-    let fitWindow = function(){
-      let minDimension = Math.min(frame.offsetHeight, frame.offsetWidth);
-      image.height = minDimension;
-      image.width = minDimension;
-      zoomValue = image.height/image.naturalHeight;
-      slider.min = minDimension/image.naturalHeight;
-      slider.value = zoomValue;
-    }
+  //   let zoomValue;
+  //   let isMouseDown = false;
+  //   let isTouch = false;
+  //   let touchSeparation;
+  //   let mousedownX;
+  //   let mousedownY;
+  //   let mouseX;
+  //   let mouseY;
+  //   let touchX;
+  //   let touchY;
+  //   let scrollAmountX;
+  //   let scrollAmountY;
+  //   frame.scrollBy({behavior: 'smooth'});
 
-    let fullScreen = function() {
-      if (!document.fullscreenElement) {
-        if (frame.requestFullscreen) {
-          frame.requestFullscreen();
-        } else if (frame.webkitRequestFullscreen) { /* Safari */
-          frame.webkitRequestFullscreen();
-        } else if (frame.msRequestFullscreen) { /* IE11 */
-          frame.msRequestFullscreen();
-        }
-      }
-      else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) { /* Safari */
-          document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) { /* IE11 */
-          document.msExitFullscreen();
-        }
-      }
-    }
+  //   let fitWindow = function(){
+  //     let minDimension = Math.min(frame.offsetHeight, frame.offsetWidth);
+  //     image.height = minDimension;
+  //     image.width = minDimension;
+  //     zoomValue = image.height/image.naturalHeight;
+  //     slider.min = minDimension/image.naturalHeight;
+  //     slider.value = zoomValue;
+  //   }
 
-    let setZoom = function(zoomTo) {
-      let imageCenterX = (frame.offsetWidth / 2 + frame.scrollLeft) / zoomValue;
-      let imageCenterY = (frame.offsetHeight / 2 + frame.scrollTop) / zoomValue;
-      if (zoomTo > 1) {zoomValue = 1;}
-      else if (zoomTo < slider.min) {zoomValue = slider.min;}
-      else {zoomValue = zoomTo;}
-      image.height = image.naturalHeight * zoomValue;
-      image.width = image.naturalWidth * zoomValue;
-      slider.value = zoomValue;
-      frame.scrollLeft = imageCenterX * zoomValue - frame.offsetWidth / 2
-      frame.scrollTop = imageCenterY * zoomValue - frame.offsetHeight / 2
-    }
+  //   let fullScreen = function() {
+  //     if (!document.fullscreenElement) {
+  //       if (frame.requestFullscreen) {
+  //         frame.requestFullscreen();
+  //       } else if (frame.webkitRequestFullscreen) { /* Safari */
+  //         frame.webkitRequestFullscreen();
+  //       } else if (frame.msRequestFullscreen) { /* IE11 */
+  //         frame.msRequestFullscreen();
+  //       }
+  //     }
+  //     else {
+  //       if (document.exitFullscreen) {
+  //         document.exitFullscreen();
+  //       } else if (document.webkitExitFullscreen) { /* Safari */
+  //         document.webkitExitFullscreen();
+  //       } else if (document.msExitFullscreen) { /* IE11 */
+  //         document.msExitFullscreen();
+  //       }
+  //     }
+  //   }
 
-    let keyMove = function(e) {
-      let scrollAmount = 10 * zoomValue;
-      switch (e.key){
-        case "ArrowLeft":
-          scrollAmountX = -scrollAmount;
-          break;
-        case "ArrowRight":
-          scrollAmountX = +scrollAmount;
-          break;
-        case "ArrowUp":
-          scrollAmountY = -scrollAmount;
-          break;
-        case "ArrowDown":
-          scrollAmountY = +scrollAmount;
-          break;
-      }
-    }
+  //   let setZoom = function(zoomTo) {
+  //     let imageCenterX = (frame.offsetWidth / 2 + frame.scrollLeft) / zoomValue;
+  //     let imageCenterY = (frame.offsetHeight / 2 + frame.scrollTop) / zoomValue;
+  //     if (zoomTo > 1) {zoomValue = 1;}
+  //     else if (zoomTo < slider.min) {zoomValue = slider.min;}
+  //     else {zoomValue = zoomTo;}
+  //     image.height = image.naturalHeight * zoomValue;
+  //     image.width = image.naturalWidth * zoomValue;
+  //     slider.value = zoomValue;
+  //     frame.scrollLeft = imageCenterX * zoomValue - frame.offsetWidth / 2
+  //     frame.scrollTop = imageCenterY * zoomValue - frame.offsetHeight / 2
+  //   }
 
-    setInterval (function() {
-      frame.scrollBy({
-        top: scrollAmountY,
-        left: scrollAmountX
-      });
-    },10);
+  //   let keyMove = function(e) {
+  //     let scrollAmount = 10 * zoomValue;
+  //     switch (e.key){
+  //       case "ArrowLeft":
+  //         scrollAmountX = -scrollAmount;
+  //         break;
+  //       case "ArrowRight":
+  //         scrollAmountX = +scrollAmount;
+  //         break;
+  //       case "ArrowUp":
+  //         scrollAmountY = -scrollAmount;
+  //         break;
+  //       case "ArrowDown":
+  //         scrollAmountY = +scrollAmount;
+  //         break;
+  //     }
+  //   }
 
-    image.addEventListener('load', fitWindow);
+  //   setInterval (function() {
+  //     frame.scrollBy({
+  //       top: scrollAmountY,
+  //       left: scrollAmountX
+  //     });
+  //   },10);
 
-    window.addEventListener("resize", fitWindow);
+  //   image.addEventListener('load', fitWindow);
 
-    document.addEventListener('keydown', keyMove);
-    document.addEventListener('keyup', () => {
-      scrollAmountX = 0;
-      scrollAmountY = 0;
-    });
+  //   window.addEventListener("resize", fitWindow);
 
-    fullScreenBtn.addEventListener('click', fullScreen);
+  //   document.addEventListener('keydown', keyMove);
+  //   document.addEventListener('keyup', () => {
+  //     scrollAmountX = 0;
+  //     scrollAmountY = 0;
+  //   });
 
-    image.addEventListener('mousedown', (e) => {
-      isMouseDown = true;
-      mousedownX = e.pageX;
-      mousedownY = e.pageY;
-      mouseX = mousedownX;
-      mouseY = mousedownY;
-    });
+  //   fullScreenBtn.addEventListener('click', fullScreen);
 
-    image.addEventListener('mousemove', (e) => {
-      e.preventDefault();
-      if(!isMouseDown) {return;}
-      frame.scrollLeft += mouseX - e.pageX;
-      frame.scrollTop += mouseY - e.pageY;
-      mouseX = e.pageX;
-      mouseY = e.pageY;
-      image.style.cursor = "grabbing";
-    });
+  //   image.addEventListener('mousedown', (e) => {
+  //     isMouseDown = true;
+  //     mousedownX = e.pageX;
+  //     mousedownY = e.pageY;
+  //     mouseX = mousedownX;
+  //     mouseY = mousedownY;
+  //   });
 
-    image.addEventListener('mouseup', (e) => {
-      isMouseDown = false;
-      /* check if image dragged and zoom if not dragged */
-      if ((e.pageX == mousedownX && e.pageY == mousedownY)) {
-        setZoom(zoomValue * 1.2)
-      }
-      image.style.cursor = "zoom-in";
-    });
+  //   image.addEventListener('mousemove', (e) => {
+  //     e.preventDefault();
+  //     if(!isMouseDown) {return;}
+  //     frame.scrollLeft += mouseX - e.pageX;
+  //     frame.scrollTop += mouseY - e.pageY;
+  //     mouseX = e.pageX;
+  //     mouseY = e.pageY;
+  //     image.style.cursor = "grabbing";
+  //   });
 
-    image.addEventListener('mouseleave', () => {
-      isMouseDown = false;
-      image.style.cursor = "zoom-in";
-    });
+  //   image.addEventListener('mouseup', (e) => {
+  //     isMouseDown = false;
+  //     /* check if image dragged and zoom if not dragged */
+  //     if ((e.pageX == mousedownX && e.pageY == mousedownY)) {
+  //       setZoom(zoomValue * 1.2)
+  //     }
+  //     image.style.cursor = "zoom-in";
+  //   });
 
-    image.addEventListener('touchstart', (e) => {
-      isTouch = true;
-      let touchStartX = 0;
-      let touchStartY = 0;
-      if (e.touches.length == 1) {
-        touchStartX = e.touches[0].pageX;
-        touchStartY = e.touches[0].pageY;
-      }
-      else {
-        touchStartX = (e.touches[0].pageX + e.touches[1].pageX) / 2;
-        touchStartY = (e.touches[0].pageY + e.touches[1].pageY) / 2;
-        touchSeparation = ((e.touches[0].pageX - e.touches[1].pageX) ** 2 + (e.touches[0].pageY - e.touches[1].pageY) ** 2) ** 0.5; 
-      }
-      touchX = touchStartX;
-      touchY = touchStartY;
-    });
+  //   image.addEventListener('mouseleave', () => {
+  //     isMouseDown = false;
+  //     image.style.cursor = "zoom-in";
+  //   });
 
-    image.addEventListener('touchmove', (e) => {
-      e.preventDefault();
-      if(!isTouch) {return;}
-      let changeX = 0;
-      let changeY = 0;
-      let changeSeparation;
-      if (e.touches.length == 1) {
-        changeX = e.touches[0].pageX;
-        changeY = e.touches[0].pageY;
-      }
-      else {
-        changeX = (e.touches[0].pageX + e.touches[1].pageX) / 2;
-        changeY = (e.touches[0].pageY + e.touches[1].pageY) / 2;
-        changeSeparation = ((e.touches[0].pageX - e.touches[1].pageX) ** 2 + (e.touches[0].pageY - e.touches[1].pageY) ** 2) ** 0.5; 
-        setZoom(zoomValue * changeSeparation/touchSeparation);
-        touchSeparation = changeSeparation;
-      }
-      frame.scrollLeft += (touchX - changeX);
-      frame.scrollTop += (touchY - changeY);
-      touchX = changeX;
-      touchY = changeY;
-    });
+  //   image.addEventListener('touchstart', (e) => {
+  //     isTouch = true;
+  //     let touchStartX = 0;
+  //     let touchStartY = 0;
+  //     if (e.touches.length == 1) {
+  //       touchStartX = e.touches[0].pageX;
+  //       touchStartY = e.touches[0].pageY;
+  //     }
+  //     else {
+  //       touchStartX = (e.touches[0].pageX + e.touches[1].pageX) / 2;
+  //       touchStartY = (e.touches[0].pageY + e.touches[1].pageY) / 2;
+  //       touchSeparation = ((e.touches[0].pageX - e.touches[1].pageX) ** 2 + (e.touches[0].pageY - e.touches[1].pageY) ** 2) ** 0.5; 
+  //     }
+  //     touchX = touchStartX;
+  //     touchY = touchStartY;
+  //   });
 
-    image.addEventListener('touchend', () => {
-      isTouch = false;
-    });
+  //   image.addEventListener('touchmove', (e) => {
+  //     e.preventDefault();
+  //     if(!isTouch) {return;}
+  //     let changeX = 0;
+  //     let changeY = 0;
+  //     let changeSeparation;
+  //     if (e.touches.length == 1) {
+  //       changeX = e.touches[0].pageX;
+  //       changeY = e.touches[0].pageY;
+  //     }
+  //     else {
+  //       changeX = (e.touches[0].pageX + e.touches[1].pageX) / 2;
+  //       changeY = (e.touches[0].pageY + e.touches[1].pageY) / 2;
+  //       changeSeparation = ((e.touches[0].pageX - e.touches[1].pageX) ** 2 + (e.touches[0].pageY - e.touches[1].pageY) ** 2) ** 0.5; 
+  //       setZoom(zoomValue * changeSeparation/touchSeparation);
+  //       touchSeparation = changeSeparation;
+  //     }
+  //     frame.scrollLeft += (touchX - changeX);
+  //     frame.scrollTop += (touchY - changeY);
+  //     touchX = changeX;
+  //     touchY = changeY;
+  //   });
 
-    image.addEventListener('wheel', (e) => {
-      e.preventDefault();
-      setZoom(zoomValue - 0.001*e.deltaY)
-    })
+  //   image.addEventListener('touchend', () => {
+  //     isTouch = false;
+  //   });
 
-    slider.addEventListener('input', (e) => {
-      setZoom(e.target.value)
-      slider.blur();
-    });
-  })
+  //   image.addEventListener('wheel', (e) => {
+  //     e.preventDefault();
+  //     setZoom(zoomValue - 0.001*e.deltaY)
+  //   })
+
+  //   slider.addEventListener('input', (e) => {
+  //     setZoom(e.target.value)
+  //     slider.blur();
+  //   });
+  // })
 </script>
 
 <template>
+  <div style="padding: 0px 12px; border: 0px 12px transparent; margin: 0px auto; width: calc(100% - 24px); max-width:1000px; background-color: white;">
+    <div style="display: flex; align-items: center;">
+      <GalleryButton @click="console.log('test')" icon="chevron_left" />
+      <GalleryButton @click="console.log('test')" icon="expand_less" />
+      <GalleryButton @click="console.log('test')" icon="chevron_right" />
+      <GalleryButton @click="console.log('test')" icon="fullscreen" />
+      <ZoomSlider v-model="scale" :minScale="minScale"/>
+    </div>
+    <ImageFrame 
+      src="/images/books.jpg" 
+      v-model:scale="scale" 
+      v-model:minScale="minScale"
+      :frameW="976" 
+      :frameH="976"
+    />
+  </div>
 
-  <div class="content fill">
+
+
+  <!-- <div class="content fill">
     <div>{{ image.caption }}</div>
     <div id="controls">
       <span class="material-icons" v-if='previousImage!==undefined' @click='router.push(previousImage.url)'>chevron_left</span>
@@ -230,12 +255,12 @@
         <FadeTransition appear><div v-show="!show.showing" class="loader"></div></FadeTransition>
         <FadeTransition><img v-show="show.showing" @load="showImg()" id= "image" :src="src"/></FadeTransition>
       </div>
-  </div>
+  </div> -->
 
 </template>
 
 <style scoped>
-  @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+/*  @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
   .fill {
     height: calc(100vh - 70px);
@@ -303,7 +328,7 @@
     margin: auto;
     width: 200px;
     cursor: pointer;
-    border-radius: 0; /*ios*/
+    border-radius: 0; 
   }
 
   ::-webkit-slider-runnable-track {
@@ -365,4 +390,5 @@
   ::-ms-tooltip { 
     display: none;
   }
+  */
 </style>
