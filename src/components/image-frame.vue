@@ -103,7 +103,7 @@
         else {
             touchstartX.value = (e.touches[0].pageX + e.touches[1].pageX) / 2;
             touchstartY.value = (e.touches[0].pageY + e.touches[1].pageY) / 2;
-            touchSeparation = ((e.touches[0].pageX - e.touches[1].pageX) ** 2 + (e.touches[0].pageY - e.touches[1].pageY) ** 2) ** 0.5; 
+            touchSeparation.value = ((e.touches[0].pageX - e.touches[1].pageX) ** 2 + (e.touches[0].pageY - e.touches[1].pageY) ** 2) ** 0.5; 
         }
     }
 
