@@ -5,6 +5,7 @@
     const props = defineProps(['src', 'frameW', 'frameH'])
     const scale = defineModel('scale');
     const minScale = defineModel('minScale');
+    const image = useTemplateRef('image');
 
     const [ centerX, centerY ] = [ ref(0), ref(0) ]
     const { mouseX, mouseY } = useMouse()
@@ -12,7 +13,6 @@
     const [ touchstartX, touchstartY ] = [ ref(0), ref(0) ]
     const touchSeparation = ref(0)
     const dragging = ref(false)
-    const image = useTemplateRef('image');
     
     const setCenter = (newX, newY) => {
         const inLeft = 0.5 * props.frameW < scale.value * newX;
@@ -120,7 +120,7 @@
             newTouchX = (e.touches[0].pageX + e.touches[1].pageX) / 2;
             newTouchY = (e.touches[0].pageY + e.touches[1].pageY) / 2;
             newSeparation = ((e.touches[0].pageX - e.touches[1].pageX) ** 2 + (e.touches[0].pageY - e.touches[1].pageY) ** 2) ** 0.5; 
-            setScale(scale.value * newSeparation / touchSeparation)
+            setScale(scale.value * newSeparation / touchSeparation.value)
             touchSeparation.value = newSeparation;
         }
 
