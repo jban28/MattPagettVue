@@ -1,29 +1,46 @@
 <script setup>
-    import { ref, useTemplateRef, watch, onMounted, onUnmounted } from 'vue';
+    import { ref, useTemplateRef, watch, onMounted, onUnmounted, computed } from 'vue';
+    import { useRouter } from 'vue-router';
     import { useMouse } from '../composables/mouse.js'
+    import { useFullScreen } from '../composables/fullScreen.js';
+    import FadeTransition from '../transitions/fade-transition.vue';
+    import ZoomSlider from '../components/zoom-slider.vue';
+    import GalleryButton from '../components/gallery-button.vue';
 
     const props = defineProps(['src'])
-    const scale = defineModel('scale');
-    const minScale = defineModel('minScale');
+    const scale = ref(0)
+    const minScale = ref('minScale');
+    const loaded = ref(false)
     const frame = useTemplateRef('frame');
     const image = useTemplateRef('image');
-
-    const [frameW, frameH] = [ ref(0), ref(0) ]
+    const router = useRouter();
+    const toggleFullScreen = useFullScreen(frame);
+    const [ frameW, frameH ] = [ ref(0), ref(0) ]
     const [ centerX, centerY ] = [ ref(0), ref(0) ]
-    const { mouseX, mouseY } = useMouse()
     const [ mousedownX, mousedownY ] = [ ref(0), ref(0) ]
     const [ touchstartX, touchstartY ] = [ ref(0), ref(0) ]
+    const { mouseX, mouseY } = useMouse();
     const touchSeparation = ref(0)
     const dragging = ref(false)
     
+    const imageTransform = computed(() => {
+        return {
+            transformOrigin: `${centerX.value}px ${centerY.value}px`,
+            transform: `translate(${0.5 * frameW.value - centerX.value}px, ${0.5 * frameH.value - centerY.value}px) scale(${scale.value})`,
+        }
+    })
+
     const setCenter = (newX, newY) => {
         const inLeft = 0.5 * frameW.value < scale.value * newX;
         const inRight = 0.5 * frameW.value < scale.value * (image.value.naturalWidth - newX);
         const inTop = 0.5 * frameH.value < scale.value * newY;
         const inBottom = 0.5 * frameH.value < scale.value * (image.value.naturalHeight - newY);
-
         if (inLeft && inRight) {
             centerX.value = newX
+        }
+        else if (image.value.naturalWidth * scale.value < frameW.value) {
+            // move to center if doesn't fill width
+            centerX.value = 0.5 * image.value.naturalWidth
         }
         else if (!inLeft) {
             centerX.value = 0.5 * frameW.value / scale.value
@@ -34,6 +51,10 @@
 
         if (inTop && inBottom) {
             centerY.value = newY
+        }
+        else if (image.value.naturalHeight * scale.value < frameH.value) {
+            // move to top if doesn't fill height
+            centerY.value = 0.5 * frameH.value /scale.value
         }
         else if (!inTop) {
             centerY.value = 0.5 * frameH.value / scale.value
@@ -60,13 +81,17 @@
     }
 
     const initialScale = () => {
-        console.log(frameH.value)
         const val = Math.min(
             frameW.value / image.value.naturalWidth, 
             frameH.value / image.value.naturalHeight
         )    
         scale.value = val
         minScale.value = val
+    }
+
+    const handleImageLoad = () => {
+        initialScale()
+        loaded.value = true;
     }
 
     const handleStartDrag = () => {
@@ -101,11 +126,11 @@
             case 'ArrowRight': newX += inc; break;
             default: break;
         }
-        setCenter(newX, newY)
+        setCenter(newX, newY);
     }
 
     const handleWheel = (e) => {
-        setScale(scale.value - 0.0005 * e.deltaY)
+        setScale(scale.value - 0.0005 * e.deltaY);
     }
 
     const handleTouchstart = (e) => {
@@ -154,9 +179,16 @@
         touchstartY.value = e.touches[0].pageY;
     }
 
+    const handleClickFullScreen = () => {
+        toggleFullScreen();
+        setFrameSize();
+        setScale(scale.value);
+    }
+
     const setFrameSize = () => {
         frameW.value = frame.value.getBoundingClientRect().width;
         frameH.value = frame.value.getBoundingClientRect().height;
+        setCenter(centerX.value, centerY.value)
     }
 
     onMounted(() => {
@@ -173,40 +205,78 @@
     watch(scale, () => {
         setCenter(centerX.value, centerY.value)
     })
-    
 </script>
 
 <template>
-    <div 
-        ref="frame"
-        class="frame" 
-        @mousedown="handleStartDrag"
-        @mousemove="handleDrag" 
-        @mouseup="handleStopDrag"
-        @mouseleave="handleStopDrag"
-        @wheel.prevent="handleWheel"
-        @touchstart="handleTouchstart"
-        @touchmove.prevent="handleTouchmove"
-        @touchend.prevent="handleTouchend"
-    >
-        <img 
-            draggable="false"
-            :src="src" 
-            ref="image"
-            @load="initialScale"
-            class="image"
-        />
+    <div style="padding: 12px 12px; border: 0px 12px transparent; margin: 0px auto; width: calc(100% - 24px); max-width:1000px; background-color: white;">
+        <div style="display: flex; align-items: center;">
+            <GalleryButton @click="router.push('')" icon="chevron_left" />
+            <GalleryButton @click="router.push('')" icon="expand_less" />
+            <GalleryButton @click="router.push('')" icon="chevron_right" />
+            <GalleryButton @click="handleClickFullScreen" icon="fullscreen" />
+            <ZoomSlider v-model="scale" :minScale="minScale"/>
+        </div>
+        <div 
+            ref="frame"
+            class="frame" 
+            @mousedown="handleStartDrag"
+            @mousemove="handleDrag" 
+            @mouseup="handleStopDrag"
+            @mouseleave="handleStopDrag"
+            @wheel.prevent="handleWheel"
+            @touchstart="handleTouchstart"
+            @touchmove.prevent="handleTouchmove"
+            @touchend.prevent="handleTouchend"
+        >
+            <FadeTransition>
+                <div v-show="!loaded" class="loader"></div>
+            </FadeTransition>
+            <FadeTransition>
+                <img 
+                    v-show="loaded"
+                    draggable="false"
+                    :src="src" 
+                    ref="image"
+                    @load="handleImageLoad"
+                    class="image"
+                    :style="imageTransform"
+                />
+            </FadeTransition>
+
+        </div>
+        <div ref="test" ></div>
     </div>
+
 </template>
 
 <style scoped>
     .frame {
+        width: 100%;
+        height: 900px;
         overflow: hidden;
-        cursor: v-bind("dragging ? 'grabbing' : 'grab'")
+        cursor: v-bind("dragging ? 'grabbing' : 'grab'");
+        margin-top: 12px;
     }
     .image {
+        position: relative;
         user-select: none;
-        transform-origin: v-bind(centerX + 'px') v-bind(centerY + 'px');
-        transform: translate(v-bind(0.5 * frameW - centerX + 'px'), v-bind(0.5 * frameH - centerY + 'px')) scale(v-bind(scale));
+        transition-property: opacity; /*prevents image jumping into view*/
+    }
+
+    .loader {
+        border: 8px solid var(--grey);
+        border-top: 8px solid var(--darkGrey);
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 5s linear infinite;
+        position: absolute;
+        left: calc(50% - 30px);
+        top: calc(50% - 30px);
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
     }
 </style>

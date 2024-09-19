@@ -3,13 +3,7 @@
   // import { onMounted } from 'vue';
   // import { useRouter } from 'vue-router';
   // import { ref, reactive, watch } from 'vue';
-  import ZoomSlider from '../components/zoom-slider.vue';
-  import GalleryButton from '../components/gallery-button.vue';
   import ImageFrame from '../components/image-frame.vue';
-  import { ref } from 'vue';
-
-  const scale = ref(1);
-  const minScale = ref(0);
 
   // const router = useRouter();
 
@@ -223,21 +217,9 @@
 </script>
 
 <template>
-  <div style="padding: 0px 12px; border: 0px 12px transparent; margin: 0px auto; width: calc(100% - 24px); max-width:1000px; background-color: white;">
-    <div style="display: flex; align-items: center;">
-      <GalleryButton @click="console.log('test')" icon="chevron_left" />
-      <GalleryButton @click="console.log('test')" icon="expand_less" />
-      <GalleryButton @click="console.log('test')" icon="chevron_right" />
-      <GalleryButton @click="console.log('test')" icon="fullscreen" />
-      <ZoomSlider v-model="scale" :minScale="minScale"/>
-    </div>
     <ImageFrame 
       src="/images/books.jpg" 
-      v-model:scale="scale" 
-      v-model:minScale="minScale"
-      style="width: 100%; height: 1000px"
     />
-  </div>
 
 
 
