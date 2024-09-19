@@ -235,8 +235,7 @@
       src="/images/books.jpg" 
       v-model:scale="scale" 
       v-model:minScale="minScale"
-      :frameW="976" 
-      :frameH="976"
+      style="width: 100%; height: 1000px"
     />
   </div>
 

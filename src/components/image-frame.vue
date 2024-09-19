@@ -2,11 +2,13 @@
     import { ref, useTemplateRef, watch, onMounted, onUnmounted } from 'vue';
     import { useMouse } from '../composables/mouse.js'
 
-    const props = defineProps(['src', 'frameW', 'frameH'])
+    const props = defineProps(['src'])
     const scale = defineModel('scale');
     const minScale = defineModel('minScale');
+    const frame = useTemplateRef('frame');
     const image = useTemplateRef('image');
 
+    const [frameW, frameH] = [ ref(0), ref(0) ]
     const [ centerX, centerY ] = [ ref(0), ref(0) ]
     const { mouseX, mouseY } = useMouse()
     const [ mousedownX, mousedownY ] = [ ref(0), ref(0) ]
@@ -15,29 +17,29 @@
     const dragging = ref(false)
     
     const setCenter = (newX, newY) => {
-        const inLeft = 0.5 * props.frameW < scale.value * newX;
-        const inRight = 0.5 * props.frameW < scale.value * (image.value.naturalWidth - newX);
-        const inTop = 0.5 * props.frameH < scale.value * newY;
-        const inBottom = 0.5 * props.frameH < scale.value * (image.value.naturalHeight - newY);
+        const inLeft = 0.5 * frameW.value < scale.value * newX;
+        const inRight = 0.5 * frameW.value < scale.value * (image.value.naturalWidth - newX);
+        const inTop = 0.5 * frameH.value < scale.value * newY;
+        const inBottom = 0.5 * frameH.value < scale.value * (image.value.naturalHeight - newY);
 
         if (inLeft && inRight) {
             centerX.value = newX
         }
         else if (!inLeft) {
-            centerX.value = 0.5 * props.frameW / scale.value
+            centerX.value = 0.5 * frameW.value / scale.value
         }
         else if (!inRight) {
-            centerX.value = image.value.naturalWidth - (0.5 * props.frameW / scale.value)
+            centerX.value = image.value.naturalWidth - (0.5 * frameW.value / scale.value)
         }
 
         if (inTop && inBottom) {
             centerY.value = newY
         }
         else if (!inTop) {
-            centerY.value = 0.5 * props.frameH / scale.value
+            centerY.value = 0.5 * frameH.value / scale.value
         }
         else if (!inBottom) {
-            centerY.value = image.value.naturalHeight - (0.5 * props.frameH / scale.value)
+            centerY.value = image.value.naturalHeight - (0.5 * frameH.value / scale.value)
         }
     }
 
@@ -48,9 +50,10 @@
     }
 
     const initialScale = () => {
+        console.log(frameH.value)
         const val = Math.min(
-            props.frameW / image.value.naturalWidth, 
-            props.frameH / image.value.naturalHeight
+            frameW.value / image.value.naturalWidth, 
+            frameH.value / image.value.naturalHeight
         )    
         scale.value = val
         minScale.value = val
@@ -141,12 +144,20 @@
         touchstartY.value = e.touches[0].pageY;
     }
 
+    const setFrameSize = () => {
+        frameW.value = frame.value.getBoundingClientRect().width;
+        frameH.value = frame.value.getBoundingClientRect().height;
+    }
+
     onMounted(() => {
         window.addEventListener('keydown', handleKey)
+        window.addEventListener('resize', setFrameSize)
+        setFrameSize();
     })
 
     onUnmounted(() => {
         window.removeEventListener('keydown', handleKey)
+        window.removeEventListener('resize', setFrameSize)
     })
 
     watch(scale, () => {
@@ -157,6 +168,7 @@
 
 <template>
     <div 
+        ref="frame"
         class="frame" 
         @mousedown="handleStartDrag"
         @mousemove="handleDrag" 
@@ -179,8 +191,6 @@
 
 <style scoped>
     .frame {
-        width: v-bind(frameW + 'px');
-        height: v-bind(frameH + 'px');
         overflow: hidden;
         cursor: v-bind("dragging ? 'grabbing' : 'grab'")
     }
