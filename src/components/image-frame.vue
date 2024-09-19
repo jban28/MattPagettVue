@@ -138,7 +138,7 @@
             return;
         }
         touchstartX.value = e.touches[0].pageX;
-        touchstartX.value = e.touches[0].pageY;
+        touchstartY.value = e.touches[0].pageY;
     }
 
     onMounted(() => {
