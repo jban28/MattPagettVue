@@ -7,7 +7,7 @@
     import ZoomSlider from '../components/zoom-slider.vue';
     import GalleryButton from '../components/gallery-button.vue';
 
-    const props = defineProps(['src'])
+    const props = defineProps(['src', 'nextUrl', 'prevUrl'])
     const scale = ref(0)
     const minScale = ref('minScale');
     const loaded = ref(false)
@@ -210,9 +210,9 @@
 <template>
     <div style="padding: 12px 12px; border: 0px 12px transparent; margin: 0px auto; width: calc(100% - 24px); max-width:1000px; background-color: white;">
         <div style="display: flex; align-items: center;">
-            <GalleryButton @click="router.push('')" icon="chevron_left" />
-            <GalleryButton @click="router.push('')" icon="expand_less" />
-            <GalleryButton @click="router.push('')" icon="chevron_right" />
+            <GalleryButton @click="() => {router.push(props.prevUrl)}" icon="chevron_left" />
+            <GalleryButton @click="() => {router.push('./')}" icon="expand_less" />
+            <GalleryButton @click="() => {router.push(props.nextUrl)}" icon="chevron_right" />
             <GalleryButton @click="handleClickFullScreen" icon="fullscreen" />
             <ZoomSlider v-model="scale" :minScale="minScale"/>
         </div>

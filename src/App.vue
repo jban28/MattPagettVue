@@ -4,7 +4,6 @@
 </script>
 
 <template>
-
   <Navbar/>
   <router-view v-slot="{ Component, route }">
     <FadeTransition :mode="route.meta.transitionMode">
