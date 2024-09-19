@@ -47,6 +47,16 @@
         if (newScale >= minScale.value && newScale <= 1) {
             scale.value = newScale
         }
+
+        if (newScale > 1) {
+            scale.value = 1;
+        }
+        else if (newScale < minScale.value) {
+            scale.value = minScale.value;
+        }
+        else {
+            scale.value = newScale;
+        }
     }
 
     const initialScale = () => {
