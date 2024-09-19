@@ -133,6 +133,14 @@
         touchstartY.value = newTouchY;
     }
 
+    const handleTouchend = (e) => {
+        if (e.touches.length == 0) {
+            return;
+        }
+        touchstartX.value = e.touches[0].pageX;
+        touchstartX.value = e.touches[0].pageY;
+    }
+
     onMounted(() => {
         window.addEventListener('keydown', handleKey)
     })
@@ -157,6 +165,7 @@
         @wheel.prevent="handleWheel"
         @touchstart="handleTouchstart"
         @touchmove.prevent="handleTouchmove"
+        @touchend.prevent="handleTouchend"
     >
         <img 
             draggable="false"
