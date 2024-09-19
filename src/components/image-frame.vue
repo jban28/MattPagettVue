@@ -7,9 +7,9 @@
     import ZoomSlider from '../components/zoom-slider.vue';
     import GalleryButton from '../components/gallery-button.vue';
 
-    const props = defineProps(['src', 'nextUrl', 'prevUrl'])
+    const props = defineProps(['src', 'caption', 'nextUrl', 'prevUrl'])
     const scale = ref(0)
-    const minScale = ref('minScale');
+    const minScale = ref(0);
     const loaded = ref(false)
     const frame = useTemplateRef('frame');
     const image = useTemplateRef('image');
@@ -81,6 +81,9 @@
     }
 
     const initialScale = () => {
+        if (!image.value) {
+            return;
+        }
         const val = Math.min(
             frameW.value / image.value.naturalWidth, 
             frameH.value / image.value.naturalHeight
@@ -209,12 +212,24 @@
 
 <template>
     <div style="padding: 12px 12px; border: 0px 12px transparent; margin: 0px auto; width: calc(100% - 24px); max-width:1000px; background-color: white;">
+        <div>{{ caption }}</div>
         <div style="display: flex; align-items: center;">
-            <GalleryButton @click="() => {router.push(props.prevUrl)}" icon="chevron_left" />
-            <GalleryButton @click="() => {router.push('./')}" icon="expand_less" />
-            <GalleryButton @click="() => {router.push(props.nextUrl)}" icon="chevron_right" />
+            <GalleryButton 
+                v-if="props.prevUrl"
+                @click="() => {router.push(props.prevUrl)}" 
+                icon="chevron_left" 
+            />
+            <GalleryButton 
+                @click="() => {router.push('./')}" 
+                icon="expand_less" 
+            />
+            <GalleryButton 
+                v-if="props.nextUrl"
+                @click="() => {router.push(props.nextUrl)}" 
+                icon="chevron_right" 
+                />
             <GalleryButton @click="handleClickFullScreen" icon="fullscreen" />
-            <ZoomSlider v-model="scale" :minScale="minScale"/>
+            <ZoomSlider v-model="scale" :minScale="minScale" style="margin-left: 6px"/>
         </div>
         <div 
             ref="frame"

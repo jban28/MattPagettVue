@@ -1,13 +1,14 @@
 <script setup>
   import ImageFrame from '../components/image-frame.vue';
-  const props = defineProps(['image', 'nextImage', 'previousImage'])
+  const props = defineProps(['imageData', 'nextUrl', 'prevUrl'])
 </script>
 
 <template>
     <ImageFrame 
-      :src="props.image.srcFull" 
-      :nextUrl="props.nextImage.url"
-      :prevUrl="props.previousImage.url"
+      :src="props.imageData.srcFull" 
+      :caption="props.imageData.caption" 
+      :nextUrl="props.nextUrl"
+      :prevUrl="props.prevUrl"
     />
 
 </template>

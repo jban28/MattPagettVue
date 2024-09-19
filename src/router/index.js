@@ -1449,21 +1449,21 @@ const images = {
     })
 
     // Create routes for each individual image
-    seriesData.forEach(function (image) {
+    seriesData.forEach(function (imageData) {
       index += 1;
       next = seriesData[index];
       routesArray.push({
-        path: image.url,
+        path: imageData.url,
         component: Image,
         props: {
-          image: image,
-          nextImage: next,
-          previousImage: previous,
+          imageData: imageData,
+          nextUrl: next ? next.url : undefined,
+          prevUrl: previous ? previous.url : undefined,
           accentColor: "var(--black)"
         },
         meta: {imgIndex: index}
       })
-      previous = image;
+      previous = imageData;
     })
   
     previous = undefined;
