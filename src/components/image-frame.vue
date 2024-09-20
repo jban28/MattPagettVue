@@ -211,9 +211,9 @@
 </script>
 
 <template>
-    <div style="padding: 12px 12px; border: 0px 12px transparent; margin: 0px auto; width: calc(100% - 24px); max-width:1000px; background-color: white;">
-        <div>{{ caption }}</div>
-        <div style="display: flex; align-items: center;">
+    <div class="container">
+        <div class="caption">{{ caption }}</div>
+        <div class="controls">
             <GalleryButton 
                 v-if="props.prevUrl"
                 @click="() => {router.push(props.prevUrl)}" 
@@ -229,7 +229,7 @@
                 icon="chevron_right" 
                 />
             <GalleryButton @click="handleClickFullScreen" icon="fullscreen" />
-            <ZoomSlider v-model="scale" :minScale="minScale" style="margin-left: 6px"/>
+            <ZoomSlider v-model="scale" :minScale="minScale" style="margin-left: 6px; width: 200px;"/>
         </div>
         <div 
             ref="frame"
@@ -259,21 +259,44 @@
             </FadeTransition>
 
         </div>
-        <div ref="test" ></div>
     </div>
 
 </template>
 
 <style scoped>
+    .container {
+        display: flex; 
+        flex-direction: column; 
+        flex-grow: 1; 
+        padding: 12px 12px;
+        border: 0px 12px transparent;
+        margin: 0px auto;
+        width: calc(100% - 24px);
+        max-width: 1000px;
+        background-color: white;
+    }
+
+    .caption {
+        flex-grow: 0; 
+    }
+
+    .controls {
+        display: flex;
+        flex-grow: 0;
+        align-items: center;
+    }
+
     .frame {
         width: 100%;
-        height: 900px;
         overflow: hidden;
+        position: relative;
         cursor: v-bind("dragging ? 'grabbing' : 'grab'");
         margin-top: 12px;
+        flex-grow: 1
     }
+
     .image {
-        position: relative;
+        position: absolute;
         user-select: none;
         transition-property: opacity; /*prevents image jumping into view*/
     }

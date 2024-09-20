@@ -41,6 +41,7 @@
     top: 0px;
     z-index: 1;
     font-size: 20px;
+    flex-grow: 0;
   }
 
   .navbar-brand {
