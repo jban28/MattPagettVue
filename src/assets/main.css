@@ -30,18 +30,6 @@ a:hover {
   min-height: 100vh;
 }
 
-.content {
-  width: 100%;
-  max-width: 1000px;
-  margin: auto;
-  background-color: var(--white);
-  padding: 12px;
-  border-width: 0px 12px;
-  border-style: solid;
-  border-color: #00000000;
-  background-clip: padding-box;
-}
-
 .center {
   text-align: center;
   width: 100%;

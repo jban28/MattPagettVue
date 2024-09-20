@@ -45,8 +45,9 @@
         background-color: white;
         height: calc(1lh + 40px);
         overflow: visible;
-        z-index: 10;
         font-size: larger;
+        position: sticky;
+        top: 0px;
     }
 
     .nav-container {

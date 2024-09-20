@@ -1,5 +1,5 @@
 <template>
-  <div class="content">  
+  <div>  
     <div class="about">
       <p>
         I'm an artist based in London, UK. This website primarily focuses on the drawings I've been making over the past ten or so years.

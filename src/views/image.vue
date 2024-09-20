@@ -5,7 +5,7 @@
 
 <template>
     <ImageFrame 
-      style="max-width: 1000px; flex-grow: 1; "
+      style="flex-grow: 1;"
       :src="props.imageData.srcFull" 
       :caption="props.imageData.caption" 
       :nextUrl="props.nextUrl"

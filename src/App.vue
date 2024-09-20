@@ -8,7 +8,9 @@
     backgroundClip: "padding-box",
     borderStyle: "solid",
     margin: "0px auto",
-    backgroundColor: "white"
+    backgroundColor: "white",
+    maxWidth: "1000px",
+    width: "100%"
   }
 </script>
 

@@ -7,7 +7,7 @@
 </script>
 
 <template>
-  <div class="content grid-container">
+  <div class="grid-container">
     <ImageLoader v-for='image in imageSet' :route='image.url' :img-url='image.srcThumb'/>
   </div>
 </template>
