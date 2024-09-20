@@ -266,14 +266,7 @@
 <style scoped>
     .container {
         display: flex; 
-        flex-direction: column; 
-        flex-grow: 1; 
-        padding: 12px 12px;
-        border: 0px 12px transparent;
-        margin: 0px auto;
-        width: calc(100% - 24px);
-        max-width: 1000px;
-        background-color: white;
+        flex-direction: column;
     }
 
     .caption {
