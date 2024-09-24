@@ -1,20 +1,17 @@
 <script setup>
   import ImageEditor from '../components/image-editor.vue';
   import draggable from 'vuedraggable';
-  import { ref, reactive } from 'vue';
+  import { useRouter } from 'vue-router';
+  import { reactive, ref } from 'vue';
   import { auth } from '../scripts/token';
 
   const props = defineProps({
     allImages: Object
   })
 
-  let seriesShown = ref("bodies");
-
-  let allImages = reactive(props.allImages);
-
-  let updateList = function () {
-    seriesShown.value = document.getElementById("series-select").value;
-  }
+  const seriesShown = ref("bodies");
+  const router = useRouter();
+  const allImages = reactive(props.allImages)
 
   let reorder = function (series) {
     let newList = [];
@@ -54,18 +51,14 @@
 
 <template>
   <div>
-    <div class="center">
-      <div class="w-50">
-        <button><router-link to="/admin/new">Add Image</router-link></button>
-      </div>
-      <div class="w-50">
-        <select id="series-select" @change="updateList">
-          <option value="bodies">Bodies</option>
-          <option value="flowers">Flowers</option>
-          <option value="designs">Designs</option>
-          <option value="plates">Plates</option>
-        </select>
-      </div>
+    <div class="controls">
+      <select v-model="seriesShown">
+        <option value="bodies">Bodies</option>
+        <option value="flowers">Flowers</option>
+        <option value="designs">Designs</option>
+        <option value="plates">Plates</option>
+      </select>
+      <button @click="() => { router.push('/admin/new') }">Add Image</button>
     </div>
 
     <draggable class="grid-container" v-model="allImages[seriesShown]" item-key="id" animation="300" @change="reorder(seriesShown)">
@@ -76,9 +69,9 @@
   </div>
 </template>
 
-<style>
-  .w-50 {
-    width:50%;
-    display: inline-block;
+<style scoped>
+  .controls {
+    display: flex; 
+    justify-content: space-evenly;
   }
 </style>

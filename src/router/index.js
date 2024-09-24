@@ -1409,10 +1409,10 @@ const images = {
   routesArray.push({
     path: "/admin",
     component: Admin,
-    beforeEnter: (to, from) => {
-      if (from.name === "login"){return true}
-      else {return {name: "login"}}
-    },
+    // beforeEnter: (to, from) => {
+    //   if (from.name === "login"){return true}
+    //   else {return {name: "login"}}
+    // },
     children: [
       {
         path: "edit",

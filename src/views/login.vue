@@ -1,14 +1,14 @@
 <script setup>
 
-  import {reactive} from 'vue';
+  import { ref } from 'vue';
   import {useRouter} from 'vue-router';
   import {auth} from '../scripts/token.js';
 
   const router = useRouter();
 
-  let username;
-  let password;
-  let message = reactive({text: ""});
+  const username = ref(null);
+  const password = ref(null);
+  const message = ref(null);
 
   let getToken = function () {
     fetch('https://artistapi.bannisterwebservices.co.uk/login',
@@ -34,30 +34,23 @@
       })
     })
     .catch(error => {
-      message.text = error.message;
+      message.value = error.message;
     })
   }
 </script>
 
 <template>
-  <div id="login-box" class="center">
+  <div style="text-align: center;">
     <h1>Admin login</h1>
-    <input id="username" class="login-element" type="text" placeholder="Username" v-model="username" autocomplete="true"><br/>
-    <input id="password" class="login-element" type="password" placeholder="Password" v-model="password" autocomplete="true"><br/>
+    <input class="login-element" type="text" placeholder="Username" v-model="username" autocomplete="true"><br/>
+    <input class="login-element" type="password" placeholder="Password" v-model="password" autocomplete="true"><br/>
     <button class="login-element" @click="getToken">Login</button>
-    <div class="login-element">{{ message.text }}</div>
+    <div class="login-element">{{ message }}</div>
   </div>
 </template>
 
-<style>
-  #login-box {
-    margin: 12px auto;
-    padding: 12px;
-    width: 250px;
-  }
-
+<style scoped>
   .login-element {
-    width: 214px;
     margin: 6px;
   }
 </style>

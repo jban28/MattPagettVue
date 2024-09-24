@@ -10,7 +10,8 @@
     margin: "0px auto",
     backgroundColor: "white",
     maxWidth: "1000px",
-    width: "100%"
+    width: "100%",
+    flexGrow: 1
   }
 </script>
 

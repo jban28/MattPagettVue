@@ -80,7 +80,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
   .new-image label {
     width: 124px;
   }
