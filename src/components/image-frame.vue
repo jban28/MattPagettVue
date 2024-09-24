@@ -80,7 +80,7 @@
         }
     }
 
-    const initialScale = () => {
+    const setMinScale = () => {
         if (!image.value) {
             return;
         }
@@ -88,12 +88,12 @@
             frameW.value / image.value.naturalWidth, 
             frameH.value / image.value.naturalHeight
         )    
-        scale.value = val
         minScale.value = val
+        return val
     }
-
+    
     const handleImageLoad = () => {
-        initialScale()
+        scale.value = setMinScale()
         loaded.value = true;
     }
 
@@ -192,6 +192,8 @@
         frameW.value = frame.value.getBoundingClientRect().width;
         frameH.value = frame.value.getBoundingClientRect().height;
         setCenter(centerX.value, centerY.value)
+        setMinScale();
+        setScale(scale.value);
     }
 
     onMounted(() => {
