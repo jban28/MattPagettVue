@@ -1,4 +1,107 @@
 <script setup>
+  import { ref, useTemplateRef } from 'vue';
+
+  const props = defineProps(['image']);
+
+  const emit = defineEmits(['update', 'delete'])
+
+  const nameInput = useTemplateRef('nameInput');
+  const captionInput = useTemplateRef('captionInput');
+
+  const editing = ref(false);
+  const showDelete = ref(false)
+
+  const submit = () => {
+    // ToDo: API Update call
+
+    emit('update', {
+      name: nameInput.value.value,
+      caption: captionInput.value.value
+    })
+    editing.value = false;
+  }
+
+  const cancel = () => {
+    editing.value = false;
+    showDelete.value = false;
+  }
+
+  const handleDelete = () => {
+    // ToDo: API Delete call
+    emit('delete');
+    cancel();
+  }
+
+</script>
+
+<template>
+  <div class="edit-box">
+    <img class="thumbnail" :src="image.srcThumb"/>
+
+    <label :for="image._id + '_name'">Name:</label>
+    <p v-if="!editing">{{ image.name }}</p>
+    <input ref="nameInput" class="text-field" v-if="editing" type="text" :value="image.name" :id="image._id + '_name'"/>
+
+    <label :for="image._id + '_caption'">Caption:</label>
+    <p v-if="!editing">{{ image.caption }}</p>
+    <input ref="captionInput" class="text-field" v-if="editing" type="text" :value="image.caption" :id="image._id + '_caption'"/>
+
+    <button @click="showDelete=true" v-if="editing">Delete</button>
+    <button @click="editing=true" v-if="!editing">Edit</button>
+    <button @click="cancel" v-if="editing">Cancel</button>
+    <button @click="submit" v-if="editing">Save</button>
+
+    <div v-if="showDelete" class="delete-panel">
+      Are you sure you want to permanently delete this image?
+      <button @click="showDelete=false" v-if="showDelete">Cancel</button>
+      <button @click="handleDelete" v-if="showDelete">Delete Permanently</button>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+  .edit-box {
+    position: relative;
+  }
+
+  .edit-box input {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .edit-box button {
+    margin-block: 12px;
+    display: block;
+    width: 100%
+  }
+
+  .thumbnail {
+    width: 100%;
+    cursor: grab;
+  }
+
+  .thumbnail:active {
+    cursor: grabbing;
+  }
+
+  .delete-panel {
+    width: 100%;
+    height: 100%;
+    background-color: #000000dd;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: 'flex';
+    align-content: center;
+    padding: 12px;
+    color: white;
+    text-align: center;
+  }
+</style>
+
+<!-- 
+
+<script setup>
   import { ref, watch } from 'vue';
   import { auth } from '../scripts/token';
 
@@ -126,4 +229,4 @@
     width: 100%;
     margin-top: 6px;
   }
-</style>
+</style> -->

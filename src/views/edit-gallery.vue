@@ -25,28 +25,39 @@
       index -= 1;
     }
     
-    fetch('https://artistapi.bannisterwebservices.co.uk/reorder', 
-    {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': auth.token
-      },
-      body: JSON.stringify(newList)
-    })
-    .then(async http => {
-      let response = http.text();
-      if (http.ok) {
-        console.log("complete");
-      }
-      else {
-        return response.then(response => {throw new Error(response);})
-      }
-    })
-    .catch(error => {
-      message.text = error;
-    })
+    // fetch('https://artistapi.bannisterwebservices.co.uk/reorder', 
+    // {
+    //   method: 'PUT',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Authorization': auth.token
+    //   },
+    //   body: JSON.stringify(newList)
+    // })
+    // .then(async http => {
+    //   let response = http.text();
+    //   if (http.ok) {
+    //     console.log("complete");
+    //   }
+    //   else {
+    //     return response.then(response => {throw new Error(response);})
+    //   }
+    // })
+    // .catch(error => {
+    //   message.text = error;
+    // })
   }
+
+  const handleDelete = (image) => {
+    allImages[seriesShown.value].splice(allImages[seriesShown.value].indexOf(image), 1);
+  }
+
+  const handleUpdate = (image, newData) => {
+    for (const key in newData) {
+      image[key] = newData[key]
+    }
+  }
+
 </script>
 
 <template>
@@ -63,7 +74,11 @@
 
     <draggable class="grid-container" v-model="allImages[seriesShown]" item-key="id" animation="300" @change="reorder(seriesShown)">
       <template #item="{element: image}">
-        <ImageEditor :image=image :allImages=allImages></ImageEditor>
+        <ImageEditor 
+          :image=image
+          @delete="handleDelete(image)"
+          @update="(newData) => { handleUpdate(image, newData) }"
+        />
       </template>
     </draggable>
   </div>
