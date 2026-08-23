@@ -42,7 +42,31 @@
           <td colspan="2">SELECTED EXHIBITIONS (*solo)</td>
         </tr>
         <tr>
-          <td style="width: 9ch">2022</td>
+          <td style="width: 9ch">2026</td>
+          <td>2026 Cass Art Prize Shortlist exhibition, London (upcoming)</td>
+        </tr>
+        <tr>
+          <td>2025</td>
+          <td>The Box, The Parlour Gallery, Triangle LGBTQ+ Centre, London*</td>
+        </tr>
+        <tr>
+          <td>2024</td>
+          <td>Tom of Finland Foundation at 40, Halle am Berghain, Berlin</td>
+        </tr>
+        <tr>
+          <td>2023-4</td>
+          <td>Various Queeriosities makers fairs, London</td>
+        </tr>
+        <tr>
+          <td>2023</td>
+          <td>Tom of Finland Fair, Royal Exchange, London</td>
+        </tr>
+        <tr>
+          <td>2022</td>
+          <td>Votive, Atelier by the Sea, Brighton</td>
+        </tr>
+        <tr>
+          <td></td>
           <td>Backstreet Reunion, Bishopsgate Institute, London*</td>
         </tr>
         <tr>
@@ -75,7 +99,7 @@
         </tr>
         <tr>
           <td>2017</td>
-          <td>I know but I don't know, Barber Institute of Fine Arts, Birmingham</td>
+          <td>I know but I don't know, Barber Institute of Fine Arts, Birmingham*</td>
         </tr>
         <tr>
           <td></td>
