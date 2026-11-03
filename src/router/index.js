@@ -43,6 +43,42 @@ let routesArray = [
 const images = {
   "bodies": [
     {
+      "_id": "64a28c317120665d0f2ec895",
+      "caption": "The Hatch; pen on paper, 60 x 83 cm; 2025",
+      "name": "The Hatch",
+      "s3KeyFull": "Matt_Pagett/bodies/full/2480_bodies_new_1B",
+      "s3KeyThumb": "Matt_Pagett/bodies/thumb/360_bodies_new_1B",
+      "sequence": 50,
+      "series": "bodies",
+      "srcFull": "https://artist-api.s3.us-east-1.amazonaws.com/Matt_Pagett/bodies/full/2480_bodies_new_1A.jpg",
+      "srcThumb": "https://artist-api.s3.us-east-1.amazonaws.com/Matt_Pagett/bodies/thumb/360_bodies_new_1A.jpg",
+      "url": "/bodies/the_hatch"
+    },
+    {
+      "_id": "64a28c317120665d0f2ec896",
+      "caption": "Remains; pen on paper, 21 x 29.7 cm x 2; 2023-5",
+      "name": "Remains",
+      "s3KeyFull": "Matt_Pagett/bodies/full/2480_bodies_new_1B",
+      "s3KeyThumb": "Matt_Pagett/bodies/thumb/360_bodies_new_1B",
+      "sequence": 49,
+      "series": "bodies",
+      "srcFull": "https://artist-api.s3.us-east-1.amazonaws.com/Matt_Pagett/bodies/full/2480_bodies_new_1B.jpg",
+      "srcThumb": "https://artist-api.s3.us-east-1.amazonaws.com/Matt_Pagett/bodies/thumb/360_bodies_new_1B.jpg",
+      "url": "/bodies/remains"
+    },
+    {
+      "_id": "64a28c317120665d0f2ec897",
+      "caption": "Remains (detail); pen on paper, 21 x 29.7 cm x 2; 2023-5",
+      "name": "Remains (detail)",
+      "s3KeyFull": "Matt_Pagett/bodies/full/2480_bodies_new_1C",
+      "s3KeyThumb": "Matt_Pagett/bodies/thumb/360_bodies_new_1C",
+      "sequence": 48,
+      "series": "bodies",
+      "srcFull": "https://artist-api.s3.us-east-1.amazonaws.com/Matt_Pagett/bodies/full/2480_bodies_new_1C.jpg",
+      "srcThumb": "https://artist-api.s3.us-east-1.amazonaws.com/Matt_Pagett/bodies/thumb/360_bodies_new_1C.jpg",
+      "url": "/bodies/remains_detail"
+    },
+    {
       "_id": "64a28c317120665d0f2ec898",
       "caption": "Gardener 1 (R); pen and crayon on paper; 18 x 18 cm; 2021",
       "name": "Gardener 1 (R)",
