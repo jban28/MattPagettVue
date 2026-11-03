@@ -43,6 +43,11 @@
     font-size: 20px;
   }
 
+  .navbar > .content {
+    position: relative;
+    align-items: center;
+  }
+
   .navbar-brand {
     display: none;
     color: var(--black);
@@ -59,14 +64,6 @@
     height: 20px;
   }
 
-  .show .nav-item {
-    margin-top: 12px;
-  }
-
-  .collapsing .nav-item {
-    margin-top: 12px;
-  }
-
   .bold {
     font-weight: bold;
   }
@@ -74,6 +71,23 @@
   @media screen and (max-width: 575px){
     .navbar-brand {
       display: inline;
+    }
+
+    .navbar-collapse {
+      position: absolute;
+      top: calc(100% - 12px);
+      right: -12px;
+      left: -12px;
+      padding: 12px 24px 20px;
+      background-color: var(--white);
+    }
+
+    .navbar-collapse .nav-item {
+      margin-top: 0;
+    }
+
+    .navbar-nav {
+      gap: 12px;
     }
 
     .hide-sm {
