@@ -25,7 +25,7 @@
               <router-link to="/designs"><span>Design etc.</span></router-link>
             </li>
             <li class="nav-item" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar.show">
-              <router-link to="/about"><span>About</span></router-link>
+              <router-link to="/about"><span>CV/Contact</span></router-link>
             </li>
           </ul>
         </div>

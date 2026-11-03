@@ -2,48 +2,27 @@
   <div class="content">  
     <div class="about">
       <p>
-        I'm an artist based in London, UK. This website primarily focuses on the drawings I've been making over the past ten or so years.
-        Whatever the subject, there's always a wider theme at the back of my mind: how do I, as someone compelled to make images with my hands,  
-        deal with the status and prevalence of the modern digital image - pixelated, ghostly, disposable etc?
-      </p>
-      <p>
         <a href="mailto:matthew.pagett@gmail.com">matthew.pagett@gmail.com</a><br/>
         <a href="https://www.instagram.com/pagettmatthew/"><i class="fa">&#xf16d;</i> pagettmatthew</a>
       </p>
 
-      <table>
-        <tr>
-          <td colspan="2">EDUCATION</td>
-        </tr>
-        <tr>
-          <td style="width: 9ch">1990-1</td>
-          <td>Foundation in Art and Design, Bournville College of Art, Birmingham</td>
-        </tr>
-        <tr>
-          <td>1991-5</td>
-          <td>MA Hons History of Art, University of Edinburgh</td>
-        </tr>
-        <tr>
-          <td>1999-00</td>
-          <td>Graduate Certificate in Web Design and Management, Lighthouse Media Centre, Brighton</td>
-        </tr>
-        <tr>
-          <td>2005</td>
-          <td>Graduate Certificate in Visual Communication, London College of Communication</td>
-        </tr>
-        <tr>
-          <td>2010-12</td>
-          <td>MA Fine Art (Printmaking), Royal College of Art, London</td>
-        </tr>
-      </table>
-      <br>
+      <p>
+        Based London, UK.
+      </p>
+
+      <p>
+        University of Edinburgh - History of Art, 1995
+        <br/>
+        Royal College of Art - Printmaking, 2012
+      </p>
+
       <table>
         <tr>
           <td colspan="2">SELECTED EXHIBITIONS (*solo)</td>
         </tr>
         <tr>
           <td style="width: 9ch">2026</td>
-          <td>2026 Cass Art Prize Shortlist exhibition, London (upcoming)</td>
+          <td>2026 Cass Art Prize Shortlist exhibition, London</td>
         </tr>
         <tr>
           <td>2025</td>
@@ -195,7 +174,7 @@
         </tr>
         <tr>
           <td style="width: 9ch">2022</td>
-          <td>Palanca Fantasy Award, Tom of Finland Foundation</td>
+          <td>Palanca Fantasy Emerging Artist Award, Tom of Finland Foundation</td>
         </tr>
         <tr>
           <td>2012</td>
@@ -206,8 +185,6 @@
           <td>Natural Forms Drawing Prize, RCA, London</td>
         </tr>
       </table>
-      <br/>
-      <em>This website was created by James Bannister. Visit <a href="https://www.bannisterwebservices.co.uk" class="button">www.bannisterwebservices.co.uk</a> to find out more.</em>
     </div>
   </div> 
 
